@@ -1,0 +1,28 @@
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE files
+.idea/
+.DS_Store
+
+# Email dataset
+data/
+*.mbox
+*.eml
+
+# Trained model weights
+*.pt
+*.pth
+
+# Local output artifacts
+results/
+
+# Keep selected report evidence
+!report_figures/
