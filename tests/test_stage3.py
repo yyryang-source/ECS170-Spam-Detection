@@ -1,17 +1,16 @@
 """Offline shape + instructor-style local dataset loading smoke tests."""
-import sys
+import pickle
 import tempfile
 import unittest
 from pathlib import Path
+from zipfile import ZipFile
 
 import numpy as np
 import torch
 from PIL import Image
 
-STAGE3 = Path(__file__).resolve().parents[1]/"script"/"stage3"
-sys.path.insert(0, str(STAGE3))
-from models import Stage3CNN
-from datasets import load_stage3_data
+from script.stage3.datasets import load_stage3_data
+from script.stage3.models import Stage3CNN
 
 
 class Stage3Tests(unittest.TestCase):
@@ -57,6 +56,36 @@ class Stage3Tests(unittest.TestCase):
             self.assertTrue(meta["prepartitioned_test"])
             self.assertEqual(len(classes), 10)
             self.assertEqual(tuple(fit[0][0].shape), (1, 28, 28))
+
+    def test_course_zip_preserves_orl_test_order_and_remaps_labels(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "stage_3_data.zip"
+            data = {
+                split: [
+                    {"image": np.full((112, 92, 3), label, dtype=np.uint8),
+                     "label": label}
+                    for label in (3, 1) for _ in range(count)
+                ]
+                for split, count in (("train", 9), ("test", 1))
+            }
+            with ZipFile(path, "w") as archive:
+                archive.writestr("stage_3_data/ORL", pickle.dumps(data, protocol=3))
+
+            (fit, val, test), classes, meta = load_stage3_data(
+                "orl", "local", path, seed=42)
+            self.assertEqual(len(fit) + len(val), 18)
+            self.assertTrue(meta["prepartitioned_test"])
+            self.assertEqual(classes, ["1", "3"])
+            self.assertEqual([y for _, y in test], [1, 0])
+            self.assertEqual(tuple(test[0][0].shape), (1, 64, 64))
+
+    def test_course_zip_rejects_non_dataset_globals(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "stage_3_data.zip"
+            with ZipFile(path, "w") as archive:
+                archive.writestr("stage_3_data/ORL", pickle.dumps(eval, protocol=3))
+            with self.assertRaises(pickle.UnpicklingError):
+                load_stage3_data("orl", "local", path)
 
 
 if __name__ == "__main__":

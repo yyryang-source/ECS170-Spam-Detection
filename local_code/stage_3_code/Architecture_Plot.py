@@ -6,15 +6,14 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 
-def plot_architecture(config, dataset, classes, channels, path, params):
-    from script.stage3.models import Stage3CNN
+def plot_architecture(config, dataset, classes, channels, path, params, pool_size=1):
     widths = (32, 64) if config == "baseline" else (32, 64, 128)
     kernel = 5 if config == "kernel5" else 3
     spatial = {"mnist": "28x28", "cifar10": "32x32", "orl": "64x64"}[dataset]
     blocks = [f"Block {i+1}\nConv {kernel}x{kernel} x2\nBN, ReLU, MaxPool\n{width} channels"
               for i, width in enumerate(widths)]
     labels = [f"Input\n{channels} x {spatial}"] + blocks + [
-        "Adaptive Global\nAverage Pool",
+        f"Adaptive Average\nPool to {pool_size}x{pool_size}",
         "FC 128 + ReLU\nDropout",
         f"Linear logits\n{len(classes)} classes"
     ]

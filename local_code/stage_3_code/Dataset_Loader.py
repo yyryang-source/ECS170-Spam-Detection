@@ -1,6 +1,6 @@
 """Stage 3 Dataset_Loader: inherits the official ECS170 dataset base class.
 
-Supports instructor-supplied class folders or NPZ files, and public MNIST/CIFAR-10
+Supports the instructor ZIP, class folders, NPZ files, and public MNIST/CIFAR-10
 reference downloads. ORL is deliberately local-only: do not replace faces with
 an unrelated benchmark.
 """

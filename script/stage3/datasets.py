@@ -1,7 +1,7 @@
 """Dataset loaders for the three datasets required by ECS 170 Stage 3.
 
 'standard': official torchvision MNIST/CIFAR10 (a runnable reference).
-'local': instructor-supplied class folders or NPZ, preserving any train/test split.
+'local': instructor archive, class folders or NPZ, preserving the train/test split.
 ORL requires local files; no alternate face dataset is silently substituted.
 """
 from pathlib import Path
@@ -11,6 +11,7 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset
 from torchvision import datasets, transforms
+from script.stage3.course_data import load_course_archive
 
 NAMES = ("mnist", "orl", "cifar10")
 
@@ -127,11 +128,20 @@ def _npz_load(path, name):
 
 def _local_datasets(root, name):
     root = Path(root)
+    if root.is_file() and root.suffix.lower() == ".zip":
+        (x_train, y_train), (x_test, y_test) = load_course_archive(root, name)
+        labels = np.unique(y_train)
+        if not np.array_equal(labels, np.unique(y_test)):
+            raise ValueError("Class labels differ between the course train and test splits")
+        label_map = {int(label): i for i, label in enumerate(labels)}
+        return (NpzDataset(x_train, y_train, name, label_map),
+                NpzDataset(x_test, y_test, name, label_map),
+                [str(label) for label in labels])
     if root.is_file() and root.suffix.lower() == ".npz":
         return _npz_load(root, name)
     if not root.is_dir():
         raise FileNotFoundError(
-            f"Dataset not found at {root}. Supply an NPZ or image folders via --data-root.")
+            f"Dataset not found at {root}. Supply the course ZIP, an NPZ, or image folders via --data-root.")
     if (root/"train").is_dir() and (root/"test").is_dir():
         train, test = datasets.ImageFolder(root/"train"), datasets.ImageFolder(root/"test")
         if train.classes != test.classes:

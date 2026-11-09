@@ -79,8 +79,6 @@ The program allows users to enter an email
 message and receive a spam/ham prediction.
 
 
-## ECS170 Stage 3 — Instructor-Specified CNN Datasets
+## ECS 170 Stage 3 CNN Image Classification
 
-**Start with [README_STAGE3.md](README_STAGE3.md).** The official Fall 2026 Stage 3 assignment requires MNIST digit recognition, ORL face recognition, and CIFAR object classification, with individual learning curves, multiclass metrics and architecture ablations. The earlier Enron Spam CNN and Fashion-MNIST work are *supplementary*, not substitutes. Stage 3 uses the dedicated files in \`script/stage3/\`.
-
-The course's exact dataset archives and supplied base-class template are required to verify formal compliance. Current code supports torchvision reference data for MNIST/CIFAR-10 and instructor datasets in class-folder or NPZ formats; ORL is local-only.
+Follow the [Stage 3 reproduction guide](README_OFFICIAL_TEMPLATE.md) to run the instructor-template code directly on the supplied `stage_3_data.zip`. The workflow trains CNNs for MNIST digits, ORL faces, and CIFAR-10 objects, compares three architectures on validation data, and exports convergence curves and held-out test metrics.

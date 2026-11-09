@@ -13,6 +13,7 @@ __pycache__/
 
 # Email dataset and downloaded image datasets
 data/
+stage_3_data.zip
 *.mbox
 *.eml
 

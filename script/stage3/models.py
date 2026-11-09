@@ -36,7 +36,8 @@ class Stage3CNN(nn.Module):
     - residual: 3 residual blocks (32,64,128), kernel 3
     - kernel5: same residual model, kernel 5 (controlled kernel-size ablation)
     """
-    def __init__(self, in_channels, num_classes, config="residual", dropout=0.3):
+    def __init__(self, in_channels, num_classes, config="residual", dropout=0.3,
+                 pool_size=1):
         super().__init__()
         if config == "baseline":
             widths, kernel, residual = (32, 64), 3, False
@@ -56,8 +57,8 @@ class Stage3CNN(nn.Module):
             incoming = width
         self.features = nn.Sequential(*layers)
         self.head = nn.Sequential(
-            nn.AdaptiveAvgPool2d((1, 1)), nn.Flatten(),
-            nn.Linear(incoming, 128), nn.ReLU(inplace=True),
+            nn.AdaptiveAvgPool2d((pool_size, pool_size)), nn.Flatten(),
+            nn.Linear(incoming * pool_size**2, 128), nn.ReLU(inplace=True),
             nn.Dropout(dropout), nn.Linear(128, num_classes))
         self.config = config
 

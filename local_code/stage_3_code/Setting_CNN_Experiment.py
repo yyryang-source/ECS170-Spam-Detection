@@ -72,7 +72,8 @@ class Setting_CNN_Experiment(setting):
             loaded["provenance"]["channels"],
             output / "model_architecture.png",
             sum(p.numel() for p in winner_model.parameters()
-                if p.requires_grad)
+                if p.requires_grad),
+            pool_size=self.method.pool_size
         )
         torch.save({
             "model": winner_model.cpu().state_dict(),
@@ -81,12 +82,16 @@ class Setting_CNN_Experiment(setting):
             "classes": loaded["classes"],
             "channels": loaded["provenance"]["channels"],
             "dropout": self.method.dropout,
+            "pool_size": self.method.pool_size,
         }, output / "best_model.pt")
         metadata = {
             "Student": "Yourui Yang",
             "Course": "ECS170 Fall 2026",
             "Dataset": self.dataset.dataset_key,
             "Dataset Provenance": loaded["provenance"],
+            "Device": str(device),
+            "Pooling Grid": self.method.pool_size,
+            "Channels Last": self.method.channels_last,
             "Architecture Configurations": list(self.configurations),
             "Epochs": self.method.max_epoch,
             "Batch Size": self.method.batch_size,

@@ -1,109 +1,51 @@
-# ECS170 Stage 3 — Official Code Template Adaptation
+# ECS 170 Stage 3 CNN Image Classification
 
-**Student: Yourui Yang**  
-**Course: ECS170 Artificial Intelligence, Fall 2026**
+Run the Fall 2026 Stage 3 experiments with the instructor-provided `stage_3_data.zip`. The ZIP is read directly, so it can stay in the location where it was downloaded.
 
-The user-provided `ECS170_Fall_2026_Source_Code_Template.zip` includes:
-`local_code/base_class/{dataset,method,setting,evaluate,result}.py`,
-the working Stage 1 examples, empty `local_code/stage_3_code/`
-and empty `script/stage_3_script/`.
+## Setup
 
-We adapted the Stage 3 CNN project to mirror that exact
-**Dataset_Loader → Method_CNN → Setting → Result_Saver → Evaluate** organization.
-
-## Stage 3 source files
-
-```
-local_code/
-  base_class/
-    dataset.py
-    method.py
-    setting.py
-    result.py
-    evaluate.py
-  stage_3_code/
-    Dataset_Loader.py
-    Method_CNN.py
-    Method_CNN_MNIST.py
-    Method_CNN_ORL.py
-    Method_CNN_CIFAR.py
-    Setting_CNN_Experiment.py
-    Evaluate_Classification.py
-    Result_Saver.py
-    Architecture_Plot.py
-script/
-  stage_3_script/
-    script_cnn.py
-    script_cnn_mnist.py
-    script_cnn_orl.py
-    script_cnn_cifar.py
-```
-
-The original Stage 1 code remains in the instructor's extracted template;
-Stage 3 extends the **same base-class contracts**.
-
-The architecture and dataset-processing primitives are reused from
-`script/stage3/models.py` and `script/stage3/datasets.py`.
-The new `Setting_CNN_Experiment` implements the official
-`setting.prepare(...)` plus `setting.load_run_save_evaluate()` flow.
-Each of the `Method_CNN_*` classes inherits the instructor's
-`method` and PyTorch `nn.Module` through `Method_CNN`.
-
-## Requirements
-
-Run from the root of `ECS170-Spam-Detection`:
+From the repository root, using the same Python interpreter for installation and training:
 
 ```powershell
-git pull origin main
 python -m pip install -r requirements-cnn.txt
-python -m unittest discover -s tests -p "test_teacher_template_stage3.py"
+$dataset = 'C:\path\to\stage_3_data.zip'
+$env:OMP_NUM_THREADS = '8'
+python script/stage_3_script/script_cnn_cifar.py --source local --data-root $dataset --epochs 6 --channels-last
+python script/stage_3_script/script_cnn_mnist.py --source local --data-root $dataset --epochs 6 --channels-last
+$env:OMP_NUM_THREADS = '6'
+python script/stage_3_script/script_cnn_orl.py --source local --data-root $dataset --epochs 25 --batch-size 32 --patience 7
 ```
 
-## Official-style training commands
+Each command runs three configurations on the entire dataset. For a local pipeline check, add `--quick --configs baseline` to use a small subset and save separate diagnostic output.
 
-Reference MNIST (downloads standard torchvision data):
+## Template structure
+
+- `local_code/base_class/` contains the course template interfaces.
+- `local_code/stage_3_code/` implements `Dataset_Loader`, one `Method_CNN_*` class for each task, the experiment setting, the evaluator, and the result saver.
+- `script/stage_3_script/` contains the three training entry points. Each calls `setting.prepare(...)` and `setting.load_run_save_evaluate()`.
+- `script/stage3/` contains the shared data handling and CNN architecture. Its standalone runner is available for historical experiments.
+
+## Dataset partitions and training
+
+| Dataset | Original training set | Fit | Validation | Held-out test | Classes |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| MNIST | 60,000 | 54,000 | 6,000 | 10,000 | 10 |
+| ORL | 360 | 270 | 90 | 40 | 40 |
+| CIFAR-10 | 50,000 | 45,000 | 5,000 | 10,000 | 10 |
+
+The loader retains the instructor's test images, labels, and ordering. It draws stratified validation examples only from the original training set, using seed 42. ORL's three identical color channels are converted to one grayscale channel.
+
+All three models use convolution, batch normalization, ReLU, and max pooling, followed by adaptive average pooling, a 128-unit dense layer, dropout, and class logits. The baseline uses two convolution blocks with 32 and 64 channels. The residual variant uses three blocks with 32, 64, and 128 channels and projection shortcuts. The kernel-5 variant changes the residual model's kernel from 3×3 to 5×5. ORL pools to a 4×4 grid to retain facial feature locations. MNIST and CIFAR-10 pool to 1×1.
+
+Models train from random initialization with AdamW, learning rate 0.001, weight decay 0.0001, cross-entropy label smoothing 0.05, dropout 0.30, and gradient clipping at 1.0. The checkpoint with the lowest validation loss represents each configuration. The setting chooses a configuration by validation macro F1 and then scores it on the test split.
+
+## Results and verification
+
+Full runs write `result/stage_3_result/<dataset>/full/`. Each directory contains train and validation loss histories, validation ablations, held-out accuracy and macro precision, recall and F1, an architecture diagram, a confusion matrix, and the selected checkpoint. The course ZIP and local artifacts are excluded from Git.
 
 ```powershell
-python script/stage_3_script/script_cnn_mnist.py --source standard --epochs 15
+python -m unittest discover -s tests -p 'test_stage3.py'
+python -m unittest discover -s tests -p 'test_teacher_template_stage3.py'
 ```
 
-Reference CIFAR-10 (downloads standard torchvision data):
-
-```powershell
-python script/stage_3_script/script_cnn_cifar.py --source standard --epochs 15
-```
-
-Instructor-provided dataset is preferred. Supply a local directory of per-class
-images or an NPZ archive with train/test fields:
-
-```powershell
-python script/stage_3_script/script_cnn_mnist.py --source local --data-root "C:\path\to\teacher_mnist.npz"
-python script/stage_3_script/script_cnn_orl.py --source local --data-root "C:\path\to\teacher_orl"
-python script/stage_3_script/script_cnn_cifar.py --source local --data-root "C:\path\to\teacher_cifar.npz"
-```
-
-To verify the path with tiny data and a single model (not report-quality):
-
-```powershell
-python script/stage_3_script/script_cnn_mnist.py --source standard --configs baseline --quick
-```
-
-All new results will be in `result/stage_3_result/<dataset>/full/`.
-They are separate from the **previously completed runs**, which remain
-under `results/stage3/<dataset>/full/`. They must not be conflated:
-the independent trainer and the template trainer may return different values.
-
-Each completed run saves loss histories, architecture diagram,
-validation ablations, test metrics, confusion matrix,
-JSON experiment settings and a model checkpoint.
-Test-set results are reported only after validation-only selection.
-
-**The ZIP did not contain the instructor's three image datasets.**
-ORL cannot be trained without local data. This code supports standard
-MNIST/CIFAR-10 for preliminary reproducibility, but if the teacher supplies
-a different split/format, add a matching loader and preserve the split.
-The class report must document exactly which source files were used.
-
-The official report template requires no more than 5 pages (10pt,
-single-spaced), architecture figures, convergence plots, all three
-required datasets, multiclass precision/recall/F1, and controlled ablations.
+Course material: [ECS 170 course page](https://www.ifmlab.org/courses.html).

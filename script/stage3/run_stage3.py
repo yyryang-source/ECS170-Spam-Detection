@@ -16,13 +16,15 @@ from torch import nn
 from torch.utils.data import DataLoader
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT/"script"/"cnn"))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-from common import (classification_metrics, get_device, plot_architecture,
-                    plot_confusion, plot_loss, plot_train_val, save_csv,
-                    save_json, seed_everything)
-from datasets import load_stage3_data
-from models import Stage3CNN
+from script.cnn.common import (classification_metrics, get_device,
+                               plot_architecture, plot_confusion, plot_loss,
+                               plot_train_val, save_csv, save_json,
+                               seed_everything)
+from script.stage3.datasets import load_stage3_data
+from script.stage3.models import Stage3CNN
 
 ALL_CONFIGS = ("baseline", "residual", "kernel5")
 

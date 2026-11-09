@@ -1,6 +1,8 @@
 # ECS 170 — Stage 3: Image Classification with CNN
 **Student:** Yourui Yang | **Course:** ECS 170, Fall 2026
 
+This page describes the earlier standalone experiments. For the course ZIP, template-based entry points, and current experiment settings, see the [Stage 3 reproduction guide](README_OFFICIAL_TEMPLATE.md).
+
 ## Important: use the instructor's actual Stage 3 datasets
 
 The official project description specifically requests:
