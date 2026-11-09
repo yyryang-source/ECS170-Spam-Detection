@@ -10,7 +10,7 @@ From the repository root, using the same Python interpreter for installation and
 python -m pip install -r requirements-cnn.txt
 $dataset = 'C:\path\to\stage_3_data.zip'
 $env:OMP_NUM_THREADS = '8'
-python script/stage_3_script/script_cnn_cifar.py --source local --data-root $dataset --epochs 15
+python script/stage_3_script/script_cnn_cifar.py --source local --data-root $dataset --epochs 3
 python script/stage_3_script/script_cnn_mnist.py --source local --data-root $dataset --epochs 3
 $env:OMP_NUM_THREADS = '6'
 python script/stage_3_script/script_cnn_orl.py --source local --data-root $dataset --epochs 25 --batch-size 32 --patience 7
@@ -43,7 +43,7 @@ Models train from random initialization with AdamW, learning rate 0.001, weight 
 
 Full runs write `result/stage_3_result/<dataset>/full/`. Each directory contains train and validation loss histories, validation ablations, held-out accuracy and macro precision, recall and F1, an architecture diagram, a confusion matrix, and the selected checkpoint. The course ZIP and local artifacts are excluded from Git.
 
-The [reported experiments](report_figures/stage3/README.md) include template-based MNIST and ORL runs trained directly on the instructor archive. The earlier CIFAR-10 run used an exact matching copy of the dataset. Its saved checkpoint reproduced its validation and test metrics when rescored through the template loader on the course ZIP.
+The [reported experiments](report_figures/stage3/README.md) cover MNIST, ORL, and CIFAR-10 runs trained directly on the instructor archive through the template entry points. This branch records the supplemental CIFAR-10 run. The original submitted results are available at [commit 3b87dee](https://github.com/yyryang-source/ECS170-Spam-Detection/tree/3b87deee75b552eaa88e513c0de8ab70bdf613b8/report_figures/stage3).
 
 ```powershell
 python -m unittest discover -s tests -p 'test_stage3.py'

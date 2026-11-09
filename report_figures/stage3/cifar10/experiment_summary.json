@@ -1,4 +1,5 @@
 {
+  "Course": "ECS170 Fall 2026",
   "Dataset": "cifar10",
   "Dataset Provenance": {
     "source": "local",
@@ -9,18 +10,14 @@
     "channels": 3,
     "prepartitioned_test": true
   },
-  "Training Entry Point": "script/stage3/run_stage3.py",
-  "Training Data": "Cached torchvision data with identical pixels, labels and split ordering",
-  "Evaluation Data": "Instructor archive, verified through template loader",
   "Device": "cpu",
   "Pooling Grid": 1,
-  "Channels Last": false,
   "Architecture Configurations": [
     "baseline",
     "residual",
     "kernel5"
   ],
-  "Epochs": 15,
+  "Epochs": 3,
   "Batch Size": 128,
   "AdamW LR": 0.001,
   "Weight Decay": 0.0001,
@@ -35,34 +32,40 @@
     {
       "Model": "baseline",
       "Parameters": 75370,
-      "Accuracy": 0.7294,
-      "Precision": 0.7396706198064826,
-      "Recall": 0.7294,
-      "F1": 0.7241780398937278
+      "Val Loss": 1.4633140798568725,
+      "Accuracy": 0.5126,
+      "Precision": 0.624315563599828,
+      "Recall": 0.5126,
+      "F1": 0.5002344601236756
     },
     {
       "Model": "residual",
       "Parameters": 315594,
-      "Accuracy": 0.8378,
-      "Precision": 0.8490574932102705,
-      "Recall": 0.8378,
-      "F1": 0.8401817453062103
+      "Val Loss": 1.139738861465454,
+      "Accuracy": 0.666,
+      "Precision": 0.7255250961012162,
+      "Recall": 0.666,
+      "F1": 0.66647956336437
     },
     {
       "Model": "kernel5",
       "Parameters": 825034,
-      "Accuracy": 0.8594,
-      "Precision": 0.8611968110735011,
-      "Recall": 0.8593999999999999,
-      "F1": 0.8589940452425141
+      "Val Loss": 0.9897342837333679,
+      "Accuracy": 0.7226,
+      "Precision": 0.7476232377519636,
+      "Recall": 0.7226,
+      "F1": 0.7167237201888866
     }
   ],
   "Test": {
-    "Accuracy": 0.8495,
-    "Precision": 0.8511772158991491,
-    "Recall": 0.8495000000000001,
-    "F1": 0.8488172930239226
+    "Accuracy": 0.7121,
+    "Precision": 0.7337734505813734,
+    "Recall": 0.7121000000000001,
+    "F1": 0.7054393270672656
   },
   "Quick Smoke Test": false,
+  "Training Entry Point": "script/stage_3_script/script_cnn_cifar.py",
+  "Training Data": "Instructor archive",
+  "Evaluation Data": "Instructor archive",
   "Instructor Archive SHA-256": "bc7592ec3117542d67625695ee68b7df1a2d9eb9eab39b9f4b44bc415b030d04"
 }
