@@ -41,8 +41,6 @@ def main(default_dataset="mnist"):
     parser.add_argument("--dropout", type=float, default=0.3)
     parser.add_argument("--learning-rate", type=float, default=0.001)
     parser.add_argument("--device", default="auto")
-    parser.add_argument("--channels-last", action="store_true",
-                        help="Use channels-last convolution weights for CPU training")
     parser.add_argument("--configs", default="baseline,residual,kernel5")
     parser.add_argument("--quick", action="store_true",
                         help="Tiny subset smoke test; results are NOT report scores")
@@ -78,7 +76,6 @@ def main(default_dataset="mnist"):
     method_obj.dropout = args.dropout
     method_obj.learning_rate = args.learning_rate
     method_obj.device_name = args.device
-    method_obj.channels_last = args.channels_last
 
     result_obj = Result_Saver("result saver", "")
     folder = ROOT / "result" / "stage_3_result" / args.dataset / (

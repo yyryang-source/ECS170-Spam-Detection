@@ -1,0 +1,68 @@
+{
+  "Dataset": "mnist",
+  "Dataset Provenance": {
+    "source": "local",
+    "data_root": "stage_3_data.zip",
+    "train": 54000,
+    "validation": 6000,
+    "test": 10000,
+    "channels": 1,
+    "prepartitioned_test": true
+  },
+  "Training Entry Point": "script/stage3/run_stage3.py",
+  "Training Data": "Cached torchvision data with identical pixels, labels and split ordering",
+  "Evaluation Data": "Instructor archive, verified through template loader",
+  "Device": "cpu",
+  "Pooling Grid": 1,
+  "Channels Last": false,
+  "Architecture Configurations": [
+    "baseline",
+    "residual",
+    "kernel5"
+  ],
+  "Epochs": 15,
+  "Batch Size": 128,
+  "AdamW LR": 0.001,
+  "Weight Decay": 0.0001,
+  "Label Smoothing": 0.05,
+  "Dropout": 0.3,
+  "Early Stopping Patience": 4,
+  "Seed": 42,
+  "Best Model": "kernel5",
+  "Best Selection": "Highest validation macro F1",
+  "Test Used For Selection": false,
+  "Validation": [
+    {
+      "Model": "baseline",
+      "Parameters": 74794,
+      "Accuracy": 0.9915,
+      "Precision": 0.9915329402961351,
+      "Recall": 0.991418154608839,
+      "F1": 0.9914641712218402
+    },
+    {
+      "Model": "residual",
+      "Parameters": 314954,
+      "Accuracy": 0.9956666666666667,
+      "Precision": 0.9956792366310872,
+      "Recall": 0.9956401259508688,
+      "F1": 0.9956502572181026
+    },
+    {
+      "Model": "kernel5",
+      "Parameters": 823370,
+      "Accuracy": 0.9956666666666667,
+      "Precision": 0.9956779854281695,
+      "Recall": 0.9957240331643373,
+      "F1": 0.9956993103983833
+    }
+  ],
+  "Test": {
+    "Accuracy": 0.996,
+    "Precision": 0.9960147617891766,
+    "Recall": 0.9959418394163727,
+    "F1": 0.9959764690874595
+  },
+  "Quick Smoke Test": false,
+  "Instructor Archive SHA-256": "bc7592ec3117542d67625695ee68b7df1a2d9eb9eab39b9f4b44bc415b030d04"
+}

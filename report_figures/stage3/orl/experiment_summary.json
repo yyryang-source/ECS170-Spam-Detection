@@ -1,0 +1,72 @@
+{
+  "Course": "ECS170 Fall 2026",
+  "Dataset": "orl",
+  "Dataset Provenance": {
+    "source": "local",
+    "data_root": "stage_3_data.zip",
+    "train": 270,
+    "validation": 90,
+    "test": 40,
+    "channels": 1,
+    "prepartitioned_test": true
+  },
+  "Device": "cpu",
+  "Pooling Grid": 4,
+  "Architecture Configurations": [
+    "baseline",
+    "residual",
+    "kernel5"
+  ],
+  "Epochs": 25,
+  "Batch Size": 32,
+  "AdamW LR": 0.001,
+  "Weight Decay": 0.0001,
+  "Label Smoothing": 0.05,
+  "Dropout": 0.3,
+  "Early Stopping Patience": 7,
+  "Seed": 42,
+  "Best Model": "residual",
+  "Best Selection": "Highest validation macro F1",
+  "Test Used For Selection": false,
+  "Validation": [
+    {
+      "Model": "baseline",
+      "Parameters": 201544,
+      "Val Loss": 0.5673208090994093,
+      "Accuracy": 0.9666666666666667,
+      "Precision": 0.9770833333333332,
+      "Recall": 0.9708333333333332,
+      "F1": 0.968095238095238
+    },
+    {
+      "Model": "residual",
+      "Parameters": 564584,
+      "Val Loss": 0.5203815870814853,
+      "Accuracy": 0.9888888888888889,
+      "Precision": 0.99375,
+      "Recall": 0.9916666666666668,
+      "F1": 0.9914285714285714
+    },
+    {
+      "Model": "kernel5",
+      "Parameters": 1073000,
+      "Val Loss": 0.5026519695917765,
+      "Accuracy": 0.9888888888888889,
+      "Precision": 0.99375,
+      "Recall": 0.9916666666666666,
+      "F1": 0.9914285714285714
+    }
+  ],
+  "Test": {
+    "Accuracy": 0.975,
+    "Precision": 0.9625,
+    "Recall": 0.975,
+    "F1": 0.9666666666666668
+  },
+  "Quick Smoke Test": false,
+  "Channels Last": false,
+  "Training Entry Point": "script/stage_3_script/script_cnn_orl.py",
+  "Training Data": "Instructor archive",
+  "Evaluation Data": "Instructor archive",
+  "Instructor Archive SHA-256": "bc7592ec3117542d67625695ee68b7df1a2d9eb9eab39b9f4b44bc415b030d04"
+}

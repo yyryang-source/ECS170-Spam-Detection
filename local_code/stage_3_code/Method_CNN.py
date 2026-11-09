@@ -27,7 +27,6 @@ class Method_CNN(method, nn.Module):
     device_name = "auto"
     config = "baseline"
     pool_size = 1
-    channels_last = False
 
     def __init__(self, mName="CNN", mDescription="", dataset_key="mnist"):
         method.__init__(self, mName, mDescription)
@@ -74,8 +73,6 @@ class Method_CNN(method, nn.Module):
             dropout=self.dropout,
             pool_size=self.pool_size
         ).to(device)
-        if self.channels_last:
-            self.network.to(memory_format=torch.channels_last)
 
         training_batches = DataLoader(
             self.data["train"], batch_size=self.batch_size, shuffle=True,

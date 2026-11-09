@@ -1,0 +1,20 @@
+{
+  "Dataset": "mnist",
+  "Archive": "stage_3_data.zip",
+  "Best Model": "kernel5",
+  "Fit Samples": 54000,
+  "Validation Samples": 6000,
+  "Test Samples": 10000,
+  "validation": {
+    "Accuracy": 0.9956666666666667,
+    "Precision": 0.9956779854281695,
+    "Recall": 0.9957240331643373,
+    "F1": 0.9956993103983833
+  },
+  "test": {
+    "Accuracy": 0.996,
+    "Precision": 0.9960147617891766,
+    "Recall": 0.9959418394163727,
+    "F1": 0.9959764690874595
+  }
+}

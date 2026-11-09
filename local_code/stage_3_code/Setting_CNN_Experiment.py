@@ -91,7 +91,6 @@ class Setting_CNN_Experiment(setting):
             "Dataset Provenance": loaded["provenance"],
             "Device": str(device),
             "Pooling Grid": self.method.pool_size,
-            "Channels Last": self.method.channels_last,
             "Architecture Configurations": list(self.configurations),
             "Epochs": self.method.max_epoch,
             "Batch Size": self.method.batch_size,

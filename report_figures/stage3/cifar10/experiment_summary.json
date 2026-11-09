@@ -1,0 +1,68 @@
+{
+  "Dataset": "cifar10",
+  "Dataset Provenance": {
+    "source": "local",
+    "data_root": "stage_3_data.zip",
+    "train": 45000,
+    "validation": 5000,
+    "test": 10000,
+    "channels": 3,
+    "prepartitioned_test": true
+  },
+  "Training Entry Point": "script/stage3/run_stage3.py",
+  "Training Data": "Cached torchvision data with identical pixels, labels and split ordering",
+  "Evaluation Data": "Instructor archive, verified through template loader",
+  "Device": "cpu",
+  "Pooling Grid": 1,
+  "Channels Last": false,
+  "Architecture Configurations": [
+    "baseline",
+    "residual",
+    "kernel5"
+  ],
+  "Epochs": 15,
+  "Batch Size": 128,
+  "AdamW LR": 0.001,
+  "Weight Decay": 0.0001,
+  "Label Smoothing": 0.05,
+  "Dropout": 0.3,
+  "Early Stopping Patience": 4,
+  "Seed": 42,
+  "Best Model": "kernel5",
+  "Best Selection": "Highest validation macro F1",
+  "Test Used For Selection": false,
+  "Validation": [
+    {
+      "Model": "baseline",
+      "Parameters": 75370,
+      "Accuracy": 0.7294,
+      "Precision": 0.7396706198064826,
+      "Recall": 0.7294,
+      "F1": 0.7241780398937278
+    },
+    {
+      "Model": "residual",
+      "Parameters": 315594,
+      "Accuracy": 0.8378,
+      "Precision": 0.8490574932102705,
+      "Recall": 0.8378,
+      "F1": 0.8401817453062103
+    },
+    {
+      "Model": "kernel5",
+      "Parameters": 825034,
+      "Accuracy": 0.8594,
+      "Precision": 0.8611968110735011,
+      "Recall": 0.8593999999999999,
+      "F1": 0.8589940452425141
+    }
+  ],
+  "Test": {
+    "Accuracy": 0.8495,
+    "Precision": 0.8511772158991491,
+    "Recall": 0.8495000000000001,
+    "F1": 0.8488172930239226
+  },
+  "Quick Smoke Test": false,
+  "Instructor Archive SHA-256": "bc7592ec3117542d67625695ee68b7df1a2d9eb9eab39b9f4b44bc415b030d04"
+}
