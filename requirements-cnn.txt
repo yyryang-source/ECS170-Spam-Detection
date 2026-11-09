@@ -1,0 +1,8 @@
+# Install torch and matching torchvision for your CPU/CUDA/MPS environment
+# See https://pytorch.org/get-started/locally/
+torch
+torchvision
+numpy
+pandas
+scikit-learn
+matplotlib
