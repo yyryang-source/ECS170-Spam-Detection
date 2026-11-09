@@ -2,9 +2,12 @@ name: Stage 3 CNN checks
 on:
   push:
     paths:
+      - "local_code/**"
       - "script/stage3/**"
+      - "script/stage_3_script/**"
       - "script/cnn/common.py"
       - "tests/test_stage3.py"
+      - "tests/test_teacher_template_stage3.py"
       - ".github/workflows/stage3-ci.yml"
   workflow_dispatch:
 jobs:
@@ -16,7 +19,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Check Python syntax
-        run: python -m compileall -q script/stage3 tests/test_stage3.py
+        run: python -m compileall -q local_code script/stage3 script/stage_3_script tests/test_stage3.py tests/test_teacher_template_stage3.py
   offline-smoke:
     needs: syntax
     runs-on: ubuntu-latest
@@ -30,5 +33,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
           python -m pip install numpy scikit-learn matplotlib pillow
-      - name: Synthetic model and dataset loader tests
+      - name: CNN architecture/dataset checks
         run: python -m unittest discover -s tests -p "test_stage3.py"
+      - name: Instructor template inheritance and workflow smoke checks
+        run: python -m unittest discover -s tests -p "test_teacher_template_stage3.py"
