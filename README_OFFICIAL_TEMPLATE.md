@@ -11,7 +11,7 @@ python -m pip install -r requirements-cnn.txt
 $dataset = 'C:\path\to\stage_3_data.zip'
 $env:OMP_NUM_THREADS = '8'
 python script/stage_3_script/script_cnn_cifar.py --source local --data-root $dataset --epochs 15
-python script/stage_3_script/script_cnn_mnist.py --source local --data-root $dataset --epochs 15
+python script/stage_3_script/script_cnn_mnist.py --source local --data-root $dataset --epochs 3
 $env:OMP_NUM_THREADS = '6'
 python script/stage_3_script/script_cnn_orl.py --source local --data-root $dataset --epochs 25 --batch-size 32 --patience 7
 ```
@@ -43,7 +43,7 @@ Models train from random initialization with AdamW, learning rate 0.001, weight 
 
 Full runs write `result/stage_3_result/<dataset>/full/`. Each directory contains train and validation loss histories, validation ablations, held-out accuracy and macro precision, recall and F1, an architecture diagram, a confusion matrix, and the selected checkpoint. The course ZIP and local artifacts are excluded from Git.
 
-The [reported experiments](report_figures/stage3/README.md) include the template-based ORL run and the earlier 15-epoch MNIST and CIFAR-10 runs. Their supplied and cached images, labels, and split ordering matched exactly. The saved MNIST and CIFAR-10 checkpoints reproduced their validation and test metrics when rescored through the template loader on the course ZIP.
+The [reported experiments](report_figures/stage3/README.md) include template-based MNIST and ORL runs trained directly on the instructor archive. The earlier CIFAR-10 run used an exact matching copy of the dataset. Its saved checkpoint reproduced its validation and test metrics when rescored through the template loader on the course ZIP.
 
 ```powershell
 python -m unittest discover -s tests -p 'test_stage3.py'

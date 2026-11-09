@@ -1,4 +1,5 @@
 {
+  "Course": "ECS170 Fall 2026",
   "Dataset": "mnist",
   "Dataset Provenance": {
     "source": "local",
@@ -9,18 +10,14 @@
     "channels": 1,
     "prepartitioned_test": true
   },
-  "Training Entry Point": "script/stage3/run_stage3.py",
-  "Training Data": "Cached torchvision data with identical pixels, labels and split ordering",
-  "Evaluation Data": "Instructor archive, verified through template loader",
   "Device": "cpu",
   "Pooling Grid": 1,
-  "Channels Last": false,
   "Architecture Configurations": [
     "baseline",
     "residual",
     "kernel5"
   ],
-  "Epochs": 15,
+  "Epochs": 3,
   "Batch Size": 128,
   "AdamW LR": 0.001,
   "Weight Decay": 0.0001,
@@ -28,41 +25,47 @@
   "Dropout": 0.3,
   "Early Stopping Patience": 4,
   "Seed": 42,
-  "Best Model": "kernel5",
+  "Best Model": "residual",
   "Best Selection": "Highest validation macro F1",
   "Test Used For Selection": false,
   "Validation": [
     {
       "Model": "baseline",
       "Parameters": 74794,
-      "Accuracy": 0.9915,
-      "Precision": 0.9915329402961351,
-      "Recall": 0.991418154608839,
-      "F1": 0.9914641712218402
+      "Val Loss": 0.36935401916503907,
+      "Accuracy": 0.9836666666666667,
+      "Precision": 0.9840118445512817,
+      "Recall": 0.9835271569990359,
+      "F1": 0.9836633424754296
     },
     {
       "Model": "residual",
       "Parameters": 314954,
-      "Accuracy": 0.9956666666666667,
-      "Precision": 0.9956792366310872,
-      "Recall": 0.9956401259508688,
-      "F1": 0.9956502572181026
+      "Val Loss": 0.3167045955657959,
+      "Accuracy": 0.991,
+      "Precision": 0.9911138039661413,
+      "Recall": 0.9910476706252617,
+      "F1": 0.9910407549947383
     },
     {
       "Model": "kernel5",
       "Parameters": 823370,
-      "Accuracy": 0.9956666666666667,
-      "Precision": 0.9956779854281695,
-      "Recall": 0.9957240331643373,
-      "F1": 0.9956993103983833
+      "Val Loss": 0.319392654021581,
+      "Accuracy": 0.9891666666666666,
+      "Precision": 0.9893995979455884,
+      "Recall": 0.9891406372088397,
+      "F1": 0.9892022548526069
     }
   ],
   "Test": {
-    "Accuracy": 0.996,
-    "Precision": 0.9960147617891766,
-    "Recall": 0.9959418394163727,
-    "F1": 0.9959764690874595
+    "Accuracy": 0.9933,
+    "Precision": 0.9933580562353106,
+    "Recall": 0.9933084302551338,
+    "F1": 0.9933133112694223
   },
   "Quick Smoke Test": false,
+  "Training Entry Point": "script/stage_3_script/script_cnn_mnist.py",
+  "Training Data": "Instructor archive",
+  "Evaluation Data": "Instructor archive",
   "Instructor Archive SHA-256": "bc7592ec3117542d67625695ee68b7df1a2d9eb9eab39b9f4b44bc415b030d04"
 }
