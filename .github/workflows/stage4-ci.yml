@@ -1,0 +1,29 @@
+name: ECS170 Stage 4 unit tests
+
+on:
+  push:
+    paths:
+      - "script/stage4/**"
+      - "tests/test_stage4.py"
+      - "requirements-stage4.txt"
+      - ".github/workflows/stage4-ci.yml"
+  pull_request:
+    paths:
+      - "script/stage4/**"
+      - "tests/test_stage4.py"
+      - "requirements-stage4.txt"
+      - ".github/workflows/stage4-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Stage 4 dependencies
+        run: python -m pip install -r requirements-stage4.txt
+      - name: Run Stage 4 unit tests
+        run: python -m unittest discover -s tests -p "test_stage4.py" -v
