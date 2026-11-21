@@ -11,9 +11,10 @@ __pycache__/
 .idea/
 .DS_Store
 
-# Email dataset and downloaded image datasets
+# Email dataset and downloaded course datasets
 data/
 stage_3_data.zip
+stage_4_data.zip
 *.mbox
 *.eml
 

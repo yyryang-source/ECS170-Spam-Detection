@@ -1,0 +1,3 @@
+# Python 3.10+; on Apple Silicon, PyTorch supports MPS when available.
+torch>=2.2
+matplotlib>=3.7
