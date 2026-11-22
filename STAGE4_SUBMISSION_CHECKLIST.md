@@ -32,3 +32,11 @@ Based on the official ECS 170 Fall 2026 project description (Stage 4 items 4-1 t
 - No pretrained GloVe files, model .pt checkpoints, or instructor dataset files are committed.
 
 Improving sampling from checkpoints may make stories more readable, but it does not improve a model's already-reported validation score, and it must be labeled as a decoding-only experiment.
+
+## Automated evidence audit
+
+Run `python script/stage4/verify_results.py --clean-output stage4_submission_results.zip`
+to validate the tracked original results and create an optional submission-only
+ZIP excluding root-level --quick diagnostics. This script is run in Stage 4 CI
+and checks the stored best checkpoints' metrics *against epoch histories*
+without retraining. It does not replace the separately required final report.

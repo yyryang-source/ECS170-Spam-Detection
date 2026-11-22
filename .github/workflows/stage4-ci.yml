@@ -8,6 +8,7 @@ on:
       - "local_code/stage_4_code/**"
       - "tests/test_stage4.py"
       - "tests/test_teacher_template_stage4.py"
+      - "tests/test_verify_results_stage4.py"
       - "requirements-stage4.txt"
       - ".github/workflows/stage4-ci.yml"
   pull_request:
@@ -33,3 +34,9 @@ jobs:
         run: python -m pip install -r requirements-stage4.txt
       - name: Run Stage 4 unit and instructor-template integration tests
         run: python -m unittest discover -s tests -p "*stage4.py" -v
+      - name: Verify all 36 archived full-run results (exclude quick)
+        run: |
+          python script/stage4/verify_results.py \
+            --archive stage4_report_results.zip \
+            --json-output /tmp/stage4_evidence_audit.json \
+            --clean-output /tmp/stage4_submission_results.zip

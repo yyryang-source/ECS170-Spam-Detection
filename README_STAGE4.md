@@ -146,3 +146,28 @@ python script/stage4/resample_generation.py \
 The resampler reuses existing local checkpoint files (not in Git); no dataset or GloVe ZIP is needed. It implements temperature, top-k/top-p, minimum continuation length and an optional no-repeat trigram constraint, and filters obvious web-format artifacts. This only changes *sampling*, not the trained model, validation perplexity, or accuracy. Report the full sampling settings; never pass off curated outputs as test-set evidence.
 
 See also [Stage 4 TA review checklist](STAGE4_SUBMISSION_CHECKLIST.md) and [experiment results](report_figures/stage4/README.md).
+
+## Audit and clean the archived final evidence (no retraining)
+
+The published stage4_report_results.zip also contains the *early root-level* one-epoch
+diagnostic run under results/stage4/. Those top-level files are **not** among the 36
+official full runs and should not be presented as final scores.
+
+The source-backed audit verifies every run's IMDb split sizes, joke train/validation
+sizes, RNN/LSTM/GRU coverage, five/30-epoch histories, validation checkpoint
+selection, perplexity arithmetic, original three-word prompt examples, and the
+existence of loss plots. It fails if any expected metric disagrees with saved
+history. It also distinguishes the **validation-selected** classifier from the
+configuration with the highest observed **test** F1.
+
+```bash
+python script/stage4/verify_results.py --archive stage4_report_results.zip \
+  --json-output results/stage4/evidence_audit.json \
+  --clean-output stage4_submission_results.zip
+```
+
+The generated stage4_submission_results.zip contains **only** the six full
+experiment folders, so the TA cannot confuse earlier quick diagnostics with
+final runs. The original archive is preserved. You can submit the cleaned ZIP
+as supplemental evidence; it never modifies the checkpoint files or reported
+scores. GitHub Actions automatically checks the tracked historical archive.
