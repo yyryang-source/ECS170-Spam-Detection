@@ -4,13 +4,19 @@ on:
   push:
     paths:
       - "script/stage4/**"
+      - "script/stage_4_script/**"
+      - "local_code/stage_4_code/**"
       - "tests/test_stage4.py"
+      - "tests/test_teacher_template_stage4.py"
       - "requirements-stage4.txt"
       - ".github/workflows/stage4-ci.yml"
   pull_request:
     paths:
       - "script/stage4/**"
+      - "script/stage_4_script/**"
+      - "local_code/stage_4_code/**"
       - "tests/test_stage4.py"
+      - "tests/test_teacher_template_stage4.py"
       - "requirements-stage4.txt"
       - ".github/workflows/stage4-ci.yml"
   workflow_dispatch:
@@ -25,5 +31,5 @@ jobs:
           python-version: "3.11"
       - name: Install Stage 4 dependencies
         run: python -m pip install -r requirements-stage4.txt
-      - name: Run Stage 4 unit tests
-        run: python -m unittest discover -s tests -p "test_stage4.py" -v
+      - name: Run Stage 4 unit and instructor-template integration tests
+        run: python -m unittest discover -s tests -p "*stage4.py" -v
