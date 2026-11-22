@@ -98,3 +98,51 @@ The tracked [Stage 4 results archive](stage4_report_results.zip) contains CSV, J
 - These are individual training runs, not multiple-seed confidence intervals.
 
 On a Mac where the MPS backend exits unexpectedly, prefer `--device cpu` for the full run. Use separate `--output-dir` paths for each embedding configuration to avoid overwriting results.
+
+## Instructor-template entry point (recommended for TA review)
+
+The preferred instructor-style entry point is now:
+```bash
+# Run a CPU smoke test on real course files (one epoch; never report the score).
+python script/stage_4_script/script_rnn.py --data data/stage_4_data.zip --quick --device cpu
+
+# Full run, same historical defaults; use a NEW output folder.
+python script/stage_4_script/script_rnn.py --data data/stage_4_data.zip \
+  --task both --models rnn,lstm,gru --device cpu \
+  --output-dir results/stage4/template_full
+
+# Optional GloVe 200d comparison (new output folder; CPU is reliable on this Mac).
+python script/stage_4_script/script_rnn.py --data data/stage_4_data.zip \
+  --glove "$HOME/Desktop/glove.2024.wikigiga.200d.zip" \
+  --embedding-dim 200 --device cpu \
+  --output-dir results/stage4/template_glove200
+```
+
+This interface uses the provided base-class design:
+- Dataset_Loader inherits dataset; checks the supplied IMDb/joke partitions.
+- Method_RNN inherits method; invokes the SAME tested training/evaluation routines under script/stage4.
+- Setting_RNN_Experiment inherits setting; calls load -> train -> evaluate -> save.
+- Evaluate_RNN inherits evaluate; selects the best classifier strictly by validation macro F1 and the best generator strictly by validation cross-entropy. The independent IMDb test set is not used to select a winner.
+- Result_Saver inherits result; saves template_summary.json, task-specific model_architecture.png, and the original trainer's histories/CSV/checkpoints.
+
+For fast offline verification:
+```bash
+python -m unittest discover -s tests -p "*stage4.py" -v
+```
+
+The 36 published historical experiments were made with script/stage4/run_stage4.py; the instructor-style wrapper was added afterward and has the same training functions and default hyperparameters. Do not claim that the archived experiments were run via the newer wrapper. Compare outputs only for matched configuration and seed. The existing Stage 4 results ZIP is unchanged.
+
+## Resampling from an already trained generation checkpoint
+
+To produce several **additional qualitative** continuations without 30-epoch retraining:
+```bash
+python script/stage4/resample_generation.py \
+  --experiment-dir results/stage4/glove300_full \
+  --models rnn,lstm,gru --num-samples 3 \
+  --min-new-tokens 10 --repetition-penalty 1.15 \
+  --output results/stage4/glove300_full/generation/resampled_examples.json
+```
+
+The resampler reuses existing local checkpoint files (not in Git); no dataset or GloVe ZIP is needed. It implements temperature, top-k/top-p, minimum continuation length and an optional no-repeat trigram constraint, and filters obvious web-format artifacts. This only changes *sampling*, not the trained model, validation perplexity, or accuracy. Report the full sampling settings; never pass off curated outputs as test-set evidence.
+
+See also [Stage 4 TA review checklist](STAGE4_SUBMISSION_CHECKLIST.md) and [experiment results](report_figures/stage4/README.md).

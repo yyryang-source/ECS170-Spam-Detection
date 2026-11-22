@@ -62,7 +62,7 @@ class Stage4TemplateTests(unittest.TestCase):
                                 f"This is a {label} review number {i}."
                             )
                 rows = "ID,Joke\n" + "".join(
-                    f'{i},"The {i} cat sits on a mat and tells a joke."\n'
+                     f'{i},"{["One funny joke","Another funny story","Very silly cats"][i % 3]} about a talking cat {i}."\n'
                     for i in range(20)
                 )
                 z.writestr("stage_4_data/text_generation/data", rows)
@@ -81,6 +81,9 @@ class Stage4TemplateTests(unittest.TestCase):
                 self.assertTrue((output / task / "vocab.json").is_file())
             self.assertTrue((output / "template_summary.json").is_file())
             self.assertTrue((output / "summary.json").is_file())
+            import json
+            samples = json.loads((output / "generation" / "generation_examples.json").read_text())
+            self.assertEqual(len(samples["rnn"]), 3)
 
 
 if __name__ == "__main__":
