@@ -45,3 +45,12 @@ jobs:
             --archive stage4_report_results.zip \
             --json-output /tmp/stage4_evidence_audit.json \
             --clean-output /tmp/stage4_submission_results.zip
+      - name: Publish verified Stage 4 evidence for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage4-verified-evidence
+          path: |
+            /tmp/stage4_submission_results.zip
+            /tmp/stage4_evidence_audit.json
+          retention-days: 90
+          if-no-files-found: error
