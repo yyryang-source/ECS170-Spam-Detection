@@ -10,7 +10,7 @@ The official project description specifically requests:
 2. **ORL** face recognition (the supplied grayscale faces may be stored as 3 identical RGB channels)
 3. **CIFAR** color-object recognition (this implementation uses CIFAR-10)
 
-The previously completed **Fashion-MNIST** and **Enron-Spam CNN** experiments are supplemental examples, **not replacements for Stage 3**. The course also requests code based on its provided template, with corresponding Dataset_Loader and Method_CNN classes inheriting the provided base classes. This standalone runner is an upgraded **reference implementation** until the exact instructor template and data files are integrated.
+Older **Fashion-MNIST** and **Enron-Spam CNN** demonstrations were supplemental work, **not replacements for Stage 3**. Their standalone demo scripts were removed during repository cleanup; they remain recoverable from Git history. The supported coursework path is the instructor's MNIST/ORL/CIFAR-10 template. The course also requests code based on its provided template, with corresponding Dataset_Loader and Method_CNN classes inheriting the provided base classes. This standalone runner is an upgraded **reference implementation** until the exact instructor template and data files are integrated.
 
 ## Architecture and controlled comparisons
 
