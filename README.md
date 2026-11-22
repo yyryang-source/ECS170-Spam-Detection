@@ -1,84 +1,71 @@
+# ECS 170 — Artificial Intelligence Coursework
 
-# ECS 170 - Spam Email Detection
+**UC Davis · Fall 2026 · Yourui Yang**
 
-**Student:** Yourui Yang  
-**Course:** ECS 170 - Artificial Intelligence  
-**University:** UC Davis  
-**Quarter:** Fall 2026
+This repository contains the reproducible source code and selected report evidence for the course's machine-learning and deep-learning projects. The instructor's datasets, downloaded GloVe archives, Python environments, and trained checkpoints are intentionally **not** versioned.
 
-## Project Description
+## Project guide
 
-This project implements a spam email detection
-system using machine learning and deep learning.
+| Project | Task | Entry point / guide |
+| --- | --- | --- |
+| Spam detection | Enron email classification with Logistic Regression, Linear SVM, and MLP | [`script/spam_detection/`](script/spam_detection/) |
+| Stage 3 | CNN image classification: MNIST, ORL, CIFAR-10 | [Instructor-template guide](README_OFFICIAL_TEMPLATE.md) |
+| Stage 4 | IMDb sentiment classification and joke generation with RNN, LSTM, GRU | [Stage 4 guide](README_STAGE4.md) |
 
-Three models are evaluated:
-- Multi-Layer Perceptron (MLP)
-- Logistic Regression
-- Linear Support Vector Machine (SVM)
+### Spam detection
 
-## Dataset
-
-Enron-Spam Email Dataset
-
-Dataset source:
-https://github.com/MWiechmann/enron_spam_data
-
-After preprocessing:
-- Total emails: 30,462
-- Training samples: 21,932
-- Validation samples: 2,437
-- Testing samples: 6,093
-
-## Final Model Performance
-
-| Model | Accuracy | F1-score |
-|---|---|---|
-| MLP | 98.77% | 98.71% |
-| Logistic Regression | 98.85% | 98.81% |
-| Linear SVM | 98.74% | 98.68% |
-
-## Ablation Study
-
-Five MLP configurations were evaluated using
-different hidden-layer dimensions and dropout rates.
-
-The best configuration used:
-- Hidden layers: 128 and 64 neurons
-- Dropout: 0.0
-- Validation F1-score: 98.88%
-
-## Installation
-
-Install dependencies:
+Install the dependencies in `requirements.txt`, place `enron_spam_data.csv` under `data/`, and run:
 
 ```bash
-pip install -r requirements.txt
-```
-
-## Run Experiments
-
-Place the dataset CSV file in:
-
-`data/enron_spam_data.csv`
-
-Then run:
-
-```bash
+python -m pip install -r requirements.txt
 python script/spam_detection/run_experiments.py
-```
-
-## Interactive Spam Detection
-
-After training, run:
-
-```bash
 python script/spam_detection/predict_email.py
 ```
 
-The program allows users to enter an email
-message and receive a spam/ham prediction.
+The original benchmark evaluated Logistic Regression, Linear SVM, and MLP on the Enron-spam dataset. See the scripts for preprocessing, split handling, and hyperparameters.
 
+### Stage 3 — CNN image classification
 
-## ECS 170 Stage 3 CNN Image Classification
+Use the **instructor-template implementation** in `local_code/` and `script/stage_3_script/`. The three tasks are MNIST, ORL faces, and CIFAR-10. Shared data loaders and CNN models are in `script/stage3/`; **`script/cnn/common.py` is a required shared utility**.
 
-Follow the [Stage 3 reproduction guide](README_OFFICIAL_TEMPLATE.md) to run the instructor-template code directly on the supplied `stage_3_data.zip`. The workflow trains CNNs for MNIST digits, ORL faces, and CIFAR-10 objects, compares three architectures on validation data, and exports convergence curves and held-out test metrics.
+- [Setup, instructor ZIP usage, and training commands](README_OFFICIAL_TEMPLATE.md)
+- [Earlier standalone reference runner](README_STAGE3.md)
+- [Published Stage 3 experiment evidence](report_figures/stage3/README.md)
+
+### Stage 4 — RNN / LSTM / GRU
+
+The instructor-provided `stage_4_data.zip` contains IMDb positive/negative review splits and the short-joke dataset. The implementation supports random embeddings and streaming GloVe vectors with 50, 100, 200, or 300 dimensions.
+
+```bash
+python -m pip install -r requirements-stage4.txt
+python -m unittest discover -s tests -p "test_stage4.py" -v
+
+# Put the instructor archive in data/stage_4_data.zip first.
+python script/stage4/run_stage4.py --quick --device cpu
+python script/stage4/run_stage4.py --task both --device cpu
+```
+
+Use `--device cpu` if PyTorch's Apple MPS backend crashes on your machine. See the [Stage 4 guide](README_STAGE4.md) for optional GloVe and individual-task commands.
+
+## Results and tests
+
+- **Stage 3:** Figures, metric summaries, and verification evidence under [`report_figures/stage3/`](report_figures/stage3/).
+- **Stage 4:** [`stage4_report_results.zip`](stage4_report_results.zip) contains the curated CSV, JSON, and PNG outputs for **36 completed runs** (6 embedding configurations × 3 recurrent architectures × 2 tasks). It excludes raw datasets and model weights.
+- **Verification:** `tests/` and `.github/workflows/` contain automated checks for Stage 3 and Stage 4.
+
+## Repository organization
+
+```text
+local_code/                  Stage 3 instructor-template classes
+script/
+  spam_detection/            Spam classification
+  cnn/common.py              Shared Stage 3 utilities
+  stage3/                    Stage 3 dataset loaders, architecture, standalone runner
+  stage_3_script/            Instructor-compatible Stage 3 entry points
+  stage4/                    Stage 4 datasets, models, training/evaluation
+tests/                       Stage 3 and Stage 4 checks
+report_figures/stage3/        Curated Stage 3 evidence
+stage4_report_results.zip    Curated Stage 4 evidence
+```
+
+Development-only PyCharm boilerplate and supplemental standalone CNN demos were removed to keep the repository focused on coursework; they remain recoverable from Git history. Do not commit datasets, downloaded GloVe files, local checkpoints, secrets, or virtual environments.

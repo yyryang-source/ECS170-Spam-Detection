@@ -1,30 +1,46 @@
-# Python virtual environment
+# Environments and local configuration
 .venv/
 venv/
+.env
+.env.*
+!.env.example
 
-# Python cache
+# Python and notebook caches
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
 
-# IDE files
+# Editors / operating systems
 .idea/
+.vscode/
 .DS_Store
+Thumbs.db
 
-# Email dataset and downloaded course datasets
+# Downloaded instructor datasets, email data, and pretrained embeddings
 data/
 stage_3_data.zip
 stage_4_data.zip
+glove.*.zip
 *.mbox
 *.eml
 
-# Trained weights
+# Local checkpoints and serialized model artifacts
 *.pt
 *.pth
+*.ckpt
+*.joblib
+*.pkl
 
-# Local experiment artifacts
+# Transient logs and per-run experiment output
+*.log
+*.tmp
 results/
 result/stage_3_result/
 
-# Keep selected report evidence
-!report_figures/
+# Curated, intentionally tracked evidence:
+# report_figures/stage3/ and stage4_report_results.zip

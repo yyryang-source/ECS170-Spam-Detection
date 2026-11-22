@@ -87,3 +87,14 @@ Write no more than 5 pages (10 pt, single spacing), including architecture diagr
 - Joke generation uses learned next-token distribution and top-k sampling. The source-training reference is included for manual review, not as a promise of exact reproduction.
 - To report architecture ablation beyond RNN vs LSTM vs GRU, rerun with different --hidden-dim/--layers and keep output directories distinct using --output-dir.
 - Do not upload the instructor dataset, pre-trained embeddings, virtualenv, or large model checkpoints to public GitHub.
+
+## Completed report experiments
+
+The tracked [Stage 4 results archive](stage4_report_results.zip) contains CSV, JSON, and PNG evidence from 36 full model runs (random embeddings at 50d/100d; GloVe at 50d/100d/200d/300d; each tested with RNN/LSTM/GRU on both tasks). Local checkpoint files remain excluded from Git.
+
+- **Best IMDb held-out test macro F1:** GloVe 300d + GRU, **87.660%** (test accuracy **87.660%**). GloVe 200d + GRU achieves **87.648%** test macro F1 with fewer parameters.
+- **Lowest joke-generation validation perplexity:** GloVe 300d + RNN, **165.54**. Generated jokes remain qualitatively imperfect; lower perplexity alone does not establish better humor or coherence.
+- Classifier checkpoints are chosen with *validation macro F1*, then evaluated on the held-out instructor test split. The joke-generation dataset has only a derived validation split; its reported perplexity is **not** an instructor test metric.
+- These are individual training runs, not multiple-seed confidence intervals.
+
+On a Mac where the MPS backend exits unexpectedly, prefer `--device cpu` for the full run. Use separate `--output-dir` paths for each embedding configuration to avoid overwriting results.
