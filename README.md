@@ -47,22 +47,34 @@ python script/stage4/run_stage4.py --task both --device cpu
 
 Use `--device cpu` if PyTorch's Apple MPS backend crashes on your machine. See the [Stage 4 guide](README_STAGE4.md) for optional GloVe and individual-task commands.
 
+## Stage 4 — recommended template-aligned workflow
+
+The instructor-style Stage 4 entry point is [script/stage_4_script/script_rnn.py](script/stage_4_script/script_rnn.py). Its Dataset/Method/Setting/Evaluate/Result classes inherit from the instructor's base classes in local_code/base_class/. It calls the same training/evaluation routines as the original runner, and keeps all existing experiment archives intact.
+
+```bash
+python script/stage_4_script/script_rnn.py --quick --device cpu
+python -m unittest discover -s tests -p "*stage4.py" -v
+```
+
+See the [TA review checklist](STAGE4_SUBMISSION_CHECKLIST.md), [full Stage 4 metrics](report_figures/stage4/README.md), and [Stage 4 workflow guide](README_STAGE4.md).
+
 ## Results and tests
 
 - **Stage 3:** Figures, metric summaries, and verification evidence under [`report_figures/stage3/`](report_figures/stage3/).
-- **Stage 4:** [`stage4_report_results.zip`](stage4_report_results.zip) contains the curated CSV, JSON, and PNG outputs for **36 completed runs** (6 embedding configurations × 3 recurrent architectures × 2 tasks). It excludes raw datasets and model weights.
+- **Stage 4:** [`stage4_report_results.zip`](stage4_report_results.zip) contains the curated CSV, JSON, and PNG outputs for **36 completed runs** (6 embedding configurations × 3 recurrent architectures × 2 tasks). See the [readable results tables](report_figures/stage4/README.md); raw datasets and model weights are excluded.
 - **Verification:** `tests/` and `.github/workflows/` contain automated checks for Stage 3 and Stage 4.
 
 ## Repository organization
 
 ```text
-local_code/                  Stage 3 instructor-template classes
+local_code/                  Instructor-template classes (Stage 3 and Stage 4)
 script/
   spam_detection/            Spam classification
   cnn/common.py              Shared Stage 3 utilities
   stage3/                    Stage 3 dataset loaders, architecture, standalone runner
   stage_3_script/            Instructor-compatible Stage 3 entry points
   stage4/                    Stage 4 datasets, models, training/evaluation
+  stage_4_script/            Instructor-compatible Stage 4 entry point
 tests/                       Stage 3 and Stage 4 checks
 report_figures/stage3/        Curated Stage 3 evidence
 stage4_report_results.zip    Curated Stage 4 evidence
