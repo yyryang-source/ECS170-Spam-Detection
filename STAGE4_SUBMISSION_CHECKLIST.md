@@ -10,7 +10,7 @@ Based on the official ECS 170 Fall 2026 project description (Stage 4 items 4-1 t
 | 4-4: story from exactly 3 starting words, compare with training text | generation_examples.json includes prompt, training_reference, generated for 3 seeds/prompts per model |
 | 4-5: replace RNN with LSTM and GRU; compare settings | 6 embedding settings × 3 architectures on both tasks; compare like-for-like initialization and dimensions |
 | 4-6: report in prescribed template, <=5 pages | Use the official report template; verify 10pt single spacing, full task/model/dataset/metrics/source/convergence/ablation sections |
-| Source-code accessible | https://github.com/yyryang-source/ECS170-Spam-Detection |
+| Source-code accessible | [Current repository root](./) (relative link remains valid after a repository rename) |
 | Verification | GitHub Actions: Stage 4 unit tests and template integration test; also manually test on the Mac CPU with --quick |
 
 ## Before submitting to Canvas
