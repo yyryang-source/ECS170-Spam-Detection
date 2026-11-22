@@ -145,7 +145,7 @@ python script/stage4/resample_generation.py \
 
 The resampler reuses existing local checkpoint files (not in Git); no dataset or GloVe ZIP is needed. It implements temperature, top-k/top-p, minimum continuation length and an optional no-repeat trigram constraint, and filters obvious web-format artifacts. This only changes *sampling*, not the trained model, validation perplexity, or accuracy. Report the full sampling settings; never pass off curated outputs as test-set evidence.
 
-See also [Stage 4 TA review checklist](STAGE4_SUBMISSION_CHECKLIST.md) and [experiment results](report_figures/stage4/README.md).
+See also [Stage 4 TA review checklist](STAGE4_SUBMISSION_CHECKLIST.md), [experiment results](report_figures/stage4/README.md), and [verbatim joke-generation comparisons](report_figures/stage4/qualitative_examples.md).
 
 ## Audit and clean the archived final evidence (no retraining)
 
