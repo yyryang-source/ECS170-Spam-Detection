@@ -7,6 +7,7 @@ on:
       - "local_code/stage_5_code/**"
       - "tests/test_stage5.py"
       - "tests/test_teacher_template_stage5.py"
+      - "tests/test_stage5_report.py"
       - "requirements-stage5.txt"
       - ".github/workflows/stage5-ci.yml"
   pull_request:
@@ -16,6 +17,7 @@ on:
       - "local_code/stage_5_code/**"
       - "tests/test_stage5.py"
       - "tests/test_teacher_template_stage5.py"
+      - "tests/test_stage5_report.py"
       - "requirements-stage5.txt"
       - ".github/workflows/stage5-ci.yml"
   workflow_dispatch:
@@ -45,3 +47,7 @@ jobs:
         run: python -m unittest discover -s tests -p "test_stage5.py" -v
       - name: Verify instructor base-class integration
         run: python -m unittest discover -s tests -p "test_teacher_template_stage5.py" -v
+      - name: Install PDF report support
+        run: python -m pip install reportlab pillow
+      - name: Test 3-dataset report safety and PDF generation
+        run: python -m unittest discover -s tests -p "test_stage5_report.py" -v

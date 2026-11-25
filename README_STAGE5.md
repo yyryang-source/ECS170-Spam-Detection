@@ -129,3 +129,37 @@ spacing and no more than five pages:
 the synthetic offline CI tests. Formal completion also requires the
 teacher's dataset ZIP, full local training, review of the actual
 generated results and a final PDF submitted through Canvas.
+
+
+## Automatic Stage 5 PDF report
+
+The PDF generator produces three pages, 10-point body text, using
+Sections 1 / 2 / 3.1-3.7 from the instructor report template.
+It reads the actual full-run experiment_summary.json files and the
+validation tables / plots for all three datasets. It fails closed if
+there are missing runs, any quick-mode scores, or mismatched provenance.
+
+Install the optional PDF dependencies:
+
+~~~powershell
+python -m pip install -r requirements-stage5-report.txt
+~~~
+
+For data files that you personally confirmed were supplied by
+the instructor, with SHA-256 recorded by the loader:
+
+~~~powershell
+python script/stage5/build_report.py --results results/stage5 --source-confirmation instructor --out results/stage5/ECS170_Stage5_Yourui_Yang.pdf
+~~~
+
+Optional: append --student-id YOUR_ID.
+
+For a PUBLIC PLANETOID REFERENCE report (NOT an instructor submission):
+
+~~~powershell
+python script/stage5/build_report.py --source-confirmation reference --out results/stage5/ECS170_Stage5_REFERENCE.pdf
+~~~
+
+The PDF includes architecture, three convergence charts, test metrics
+and validation ablations. Inspect the resulting pages and confirm
+Canvas submission rules before treating it as final coursework evidence.
