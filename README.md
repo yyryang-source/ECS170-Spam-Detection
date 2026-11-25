@@ -11,6 +11,7 @@ This repository contains the reproducible source code and selected report eviden
 | Spam detection | Enron email classification with Logistic Regression, Linear SVM, and MLP | [`script/spam_detection/`](script/spam_detection/) |
 | Stage 3 | CNN image classification: MNIST, ORL, CIFAR-10 | [Instructor-template guide](README_OFFICIAL_TEMPLATE.md) |
 | Stage 4 | IMDb sentiment classification and joke generation with RNN, LSTM, GRU | [Stage 4 guide](README_STAGE4.md) |
+| Stage 5 | Sparse GCN node classification on Cora, Citeseer, Pubmed | [Stage 5 guide](README_STAGE5.md) |
 
 ### Spam detection
 
@@ -57,6 +58,12 @@ python -m unittest discover -s tests -p "*stage4.py" -v
 ```
 
 See the [TA review checklist](STAGE4_SUBMISSION_CHECKLIST.md), [full Stage 4 metrics](report_figures/stage4/README.md), and [Stage 4 workflow guide](README_STAGE4.md).
+
+### Stage 5 — GCN graph embedding and node classification
+
+The Stage 5 implementation follows the instructor base-class structure, supports Cora/Citeseer/Pubmed, and implements sparse (non-dense) normalized graph convolutions, model-depth/width/dropout ablations, train/validation/test isolation, and report-ready figures. See [README_STAGE5.md](README_STAGE5.md) and [script/stage_5_script/script_gcn.py](script/stage_5_script/script_gcn.py).
+
+**Stage 5 training metrics are not yet claimed**: published tests use small synthetic graphs, and final results require instructor-provided dataset verification plus real local runs.
 
 ## Results and tests
 
