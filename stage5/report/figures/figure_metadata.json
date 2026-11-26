@@ -1,0 +1,144 @@
+{
+  "learning_curves": {
+    "cora": {
+      "source": "results/cora/baseline/seed_42/history.csv",
+      "best_epoch": 300,
+      "epochs_ran": 300
+    },
+    "pubmed": {
+      "source": "results/pubmed/baseline/seed_42/history.csv",
+      "best_epoch": 151,
+      "epochs_ran": 201
+    },
+    "citeseer": {
+      "source": "results/citeseer/baseline/seed_42/history.csv",
+      "best_epoch": 298,
+      "epochs_ran": 300
+    }
+  },
+  "embeddings_pca": {
+    "cora": {
+      "source": "results/cora/baseline/seed_42/embeddings.npz",
+      "source_sha256": "203c244dcb63e5e1641dd3289f35202a81f43c6aa22aa37e0028779a8201ba8d",
+      "node_count": 2708,
+      "embedding_dim": 16,
+      "explained_variance_ratio": [
+        0.2993403971195221,
+        0.25148504972457886
+      ],
+      "class_ids": {
+        "0": "Case_Based",
+        "1": "Genetic_Algorithms",
+        "2": "Neural_Networks",
+        "3": "Probabilistic_Methods",
+        "4": "Reinforcement_Learning",
+        "5": "Rule_Learning",
+        "6": "Theory"
+      },
+      "scope": "All graph nodes, colored by true labels; qualitative visualization only"
+    },
+    "pubmed": {
+      "source": "results/pubmed/baseline/seed_42/embeddings.npz",
+      "source_sha256": "fe9d74d06fa143852ae9bd8ac159f2827c3f078e99015c31a0fe9f7ab457718e",
+      "node_count": 19717,
+      "embedding_dim": 16,
+      "explained_variance_ratio": [
+        0.5769581198692322,
+        0.36962273716926575
+      ],
+      "class_ids": {
+        "0": "0",
+        "1": "1",
+        "2": "2"
+      },
+      "scope": "All graph nodes, colored by true labels; qualitative visualization only"
+    },
+    "citeseer": {
+      "source": "results/citeseer/baseline/seed_42/embeddings.npz",
+      "source_sha256": "8e2c3252f9303a2435e1a5ba2198c2327673951d8e9a3eca39fac2bd96e90ac4",
+      "node_count": 3312,
+      "embedding_dim": 16,
+      "explained_variance_ratio": [
+        0.3725552260875702,
+        0.22247689962387085
+      ],
+      "class_ids": {
+        "0": "AI",
+        "1": "Agents",
+        "2": "DB",
+        "3": "HCI",
+        "4": "IR",
+        "5": "ML"
+      },
+      "scope": "All graph nodes, colored by true labels; qualitative visualization only"
+    }
+  },
+  "ablation": [
+    {
+      "dataset": "cora",
+      "variant": "baseline",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "accuracy_percent_mean": 80.66666666666667,
+      "accuracy_percent_sample_sd": 0.6666666666666684
+    },
+    {
+      "dataset": "pubmed",
+      "variant": "baseline",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "accuracy_percent_mean": 84.5,
+      "accuracy_percent_sample_sd": 0.927960727138334
+    },
+    {
+      "dataset": "citeseer",
+      "variant": "baseline",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "accuracy_percent_mean": 62.22222222222223,
+      "accuracy_percent_sample_sd": 0.48828877309019064
+    },
+    {
+      "dataset": "cora",
+      "variant": "hidden32",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "accuracy_percent_mean": 81.33333333333333,
+      "accuracy_percent_sample_sd": 0.16495721976846803
+    },
+    {
+      "dataset": "pubmed",
+      "variant": "hidden32",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "accuracy_percent_mean": 84.16666666666667,
+      "accuracy_percent_sample_sd": 0.44095855184409755
+    },
+    {
+      "dataset": "citeseer",
+      "variant": "hidden32",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "accuracy_percent_mean": 63.361111111111114,
+      "accuracy_percent_sample_sd": 0.315494908100016
+    }
+  ]
+}

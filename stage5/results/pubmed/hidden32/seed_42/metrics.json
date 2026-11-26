@@ -1,0 +1,85 @@
+{
+  "accuracy": 0.8433333333333334,
+  "precision_macro": 0.8429826418112204,
+  "recall_macro": 0.8433333333333333,
+  "f1_macro": 0.8424054028636451,
+  "confusion_matrix": [
+    [
+      180,
+      4,
+      16
+    ],
+    [
+      8,
+      175,
+      17
+    ],
+    [
+      15,
+      34,
+      151
+    ]
+  ],
+  "per_class": {
+    "0": {
+      "precision": 0.8866995073891626,
+      "recall": 0.9,
+      "f1-score": 0.8933002481389578,
+      "support": 200.0
+    },
+    "1": {
+      "precision": 0.8215962441314554,
+      "recall": 0.875,
+      "f1-score": 0.847457627118644,
+      "support": 200.0
+    },
+    "2": {
+      "precision": 0.8206521739130435,
+      "recall": 0.755,
+      "f1-score": 0.7864583333333334,
+      "support": 200.0
+    },
+    "accuracy": 0.8433333333333334,
+    "macro avg": {
+      "precision": 0.8429826418112204,
+      "recall": 0.8433333333333333,
+      "f1-score": 0.8424054028636451,
+      "support": 600.0
+    },
+    "weighted avg": {
+      "precision": 0.8429826418112205,
+      "recall": 0.8433333333333334,
+      "f1-score": 0.8424054028636451,
+      "support": 600.0
+    }
+  },
+  "test_loss": 0.5388410091400146,
+  "best_epoch": 84,
+  "best_val_loss": 0.6093558669090271,
+  "epochs_ran": 134,
+  "training_seconds": 7.174862166997627,
+  "train_accuracy_at_best": 0.9666666388511658,
+  "validation_accuracy_at_best": 0.8333333134651184,
+  "config": {
+    "hidden_dim": 32,
+    "depth": 2,
+    "dropout": 0.5,
+    "learning_rate": 0.01,
+    "weight_decay": 0.0005,
+    "max_epochs": 300,
+    "patience": 50,
+    "seed": 42,
+    "device": "cpu",
+    "threads": 4
+  },
+  "dataset": "pubmed",
+  "parameter_count": 16131,
+  "environment": {
+    "python": "3.13.17",
+    "torch": "2.15.0",
+    "numpy": "2.5.5",
+    "platform": "macOS-14.4-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "device": "cpu"
+  }
+}

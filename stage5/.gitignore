@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+data/
+stage_5_data/
+*.pt
+*.npz
+*.zip
+report/identity.json
+report/Stage5_Report.pdf
+report/Stage5_Report.html

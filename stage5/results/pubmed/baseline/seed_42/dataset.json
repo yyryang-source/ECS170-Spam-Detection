@@ -1,0 +1,49 @@
+{
+  "dataset": "pubmed",
+  "nodes": 19717,
+  "features": 500,
+  "classes": [
+    "0",
+    "1",
+    "2"
+  ],
+  "class_counts": [
+    4103,
+    7739,
+    7875
+  ],
+  "raw_link_rows": 44324,
+  "undirected_nonself_edges": 44324,
+  "raw_self_loops": 0,
+  "isolated_nodes_excluding_self": 0,
+  "normalized_adjacency_nnz": 108365,
+  "split_seed": 42,
+  "split_counts": {
+    "idx_train": 60,
+    "idx_val": 30,
+    "idx_test": 600
+  },
+  "split_class_counts": {
+    "idx_train": [
+      20,
+      20,
+      20
+    ],
+    "idx_val": [
+      10,
+      10,
+      10
+    ],
+    "idx_test": [
+      200,
+      200,
+      200
+    ]
+  },
+  "feature_normalization": "row_l1",
+  "self_loop_policy": "preserve raw loops, then add identity (matches supplied loader)",
+  "sha256": {
+    "node": "971f5ca73b7c1b514856fc770f66d4af884edfa5ec1c157acdc1cee19ab9f8f1",
+    "link": "bc562730d6a8f0ac852a99477554874c7cb9debe5ff7045c8a88ce93cc0d447f"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "dataset": "cora",
+  "nodes": 2708,
+  "features": 1433,
+  "classes": [
+    "Case_Based",
+    "Genetic_Algorithms",
+    "Neural_Networks",
+    "Probabilistic_Methods",
+    "Reinforcement_Learning",
+    "Rule_Learning",
+    "Theory"
+  ],
+  "class_counts": [
+    298,
+    418,
+    818,
+    426,
+    217,
+    180,
+    351
+  ],
+  "raw_link_rows": 5429,
+  "undirected_nonself_edges": 5278,
+  "raw_self_loops": 0,
+  "isolated_nodes_excluding_self": 0,
+  "normalized_adjacency_nnz": 13264,
+  "split_seed": 42,
+  "split_counts": {
+    "idx_train": 140,
+    "idx_val": 70,
+    "idx_test": 1050
+  },
+  "split_class_counts": {
+    "idx_train": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "idx_val": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "idx_test": [
+      150,
+      150,
+      150,
+      150,
+      150,
+      150,
+      150
+    ]
+  },
+  "feature_normalization": "row_l1",
+  "self_loop_policy": "preserve raw loops, then add identity (matches supplied loader)",
+  "sha256": {
+    "node": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "link": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  }
+}

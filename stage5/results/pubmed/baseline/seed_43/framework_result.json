@@ -1,0 +1,93 @@
+{
+  "metrics": {
+    "accuracy": 0.8433333333333334,
+    "precision_macro": 0.8423383401737469,
+    "recall_macro": 0.8433333333333333,
+    "f1_macro": 0.8425582901780525,
+    "confusion_matrix": [
+      [
+        184,
+        3,
+        13
+      ],
+      [
+        8,
+        167,
+        25
+      ],
+      [
+        18,
+        27,
+        155
+      ]
+    ],
+    "per_class": {
+      "0": {
+        "precision": 0.8761904761904762,
+        "recall": 0.92,
+        "f1-score": 0.8975609756097561,
+        "support": 200.0
+      },
+      "1": {
+        "precision": 0.8477157360406091,
+        "recall": 0.835,
+        "f1-score": 0.8413098236775819,
+        "support": 200.0
+      },
+      "2": {
+        "precision": 0.8031088082901554,
+        "recall": 0.775,
+        "f1-score": 0.7888040712468194,
+        "support": 200.0
+      },
+      "accuracy": 0.8433333333333334,
+      "macro avg": {
+        "precision": 0.8423383401737469,
+        "recall": 0.8433333333333333,
+        "f1-score": 0.8425582901780525,
+        "support": 600.0
+      },
+      "weighted avg": {
+        "precision": 0.8423383401737471,
+        "recall": 0.8433333333333334,
+        "f1-score": 0.8425582901780525,
+        "support": 600.0
+      }
+    },
+    "test_loss": 0.513838529586792,
+    "best_epoch": 145,
+    "best_val_loss": 0.6290168762207031,
+    "epochs_ran": 195,
+    "training_seconds": 9.854282916996453,
+    "train_accuracy_at_best": 0.9833333492279053,
+    "validation_accuracy_at_best": 0.800000011920929,
+    "config": {
+      "hidden_dim": 16,
+      "depth": 2,
+      "dropout": 0.5,
+      "learning_rate": 0.01,
+      "weight_decay": 0.0005,
+      "max_epochs": 300,
+      "patience": 50,
+      "seed": 43,
+      "device": "cpu",
+      "threads": 4
+    },
+    "dataset": "pubmed",
+    "parameter_count": 8067,
+    "environment": {
+      "python": "3.13.17",
+      "torch": "2.15.0",
+      "numpy": "2.5.5",
+      "platform": "macOS-14.4-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "device": "cpu"
+    }
+  },
+  "evaluation": {
+    "accuracy": 0.8433333333333334,
+    "precision_macro": 0.8423383401737469,
+    "recall_macro": 0.8433333333333333,
+    "f1_macro": 0.8425582901780525
+  }
+}

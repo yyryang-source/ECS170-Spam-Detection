@@ -1,0 +1,64 @@
+{
+  "dataset": "citeseer",
+  "nodes": 3312,
+  "features": 3703,
+  "classes": [
+    "AI",
+    "Agents",
+    "DB",
+    "HCI",
+    "IR",
+    "ML"
+  ],
+  "class_counts": [
+    249,
+    596,
+    701,
+    508,
+    668,
+    590
+  ],
+  "raw_link_rows": 4715,
+  "undirected_nonself_edges": 4536,
+  "raw_self_loops": 124,
+  "isolated_nodes_excluding_self": 48,
+  "normalized_adjacency_nnz": 12384,
+  "split_seed": 42,
+  "split_counts": {
+    "idx_train": 120,
+    "idx_val": 60,
+    "idx_test": 1200
+  },
+  "split_class_counts": {
+    "idx_train": [
+      20,
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "idx_val": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "idx_test": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ]
+  },
+  "feature_normalization": "row_l1",
+  "self_loop_policy": "preserve raw loops, then add identity (matches supplied loader)",
+  "sha256": {
+    "node": "0c5dec749ff43f317e9df992bd1a1ee2106d64251ee2337eb5f78971bf9e9898",
+    "link": "c6069e44df3fbd67ffabe4aa0af8d9e3d6c371af01c8663d9a91680a5e9119b9"
+  }
+}

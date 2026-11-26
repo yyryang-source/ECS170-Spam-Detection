@@ -1,0 +1,165 @@
+{
+  "metrics": {
+    "accuracy": 0.8142857142857143,
+    "precision_macro": 0.8151898214988484,
+    "recall_macro": 0.8142857142857142,
+    "f1_macro": 0.8141366725356517,
+    "confusion_matrix": [
+      [
+        126,
+        4,
+        4,
+        2,
+        1,
+        8,
+        5
+      ],
+      [
+        6,
+        137,
+        2,
+        0,
+        3,
+        1,
+        1
+      ],
+      [
+        5,
+        2,
+        110,
+        12,
+        8,
+        0,
+        13
+      ],
+      [
+        5,
+        1,
+        17,
+        114,
+        3,
+        1,
+        9
+      ],
+      [
+        3,
+        8,
+        4,
+        1,
+        130,
+        0,
+        4
+      ],
+      [
+        12,
+        0,
+        1,
+        2,
+        0,
+        124,
+        11
+      ],
+      [
+        6,
+        1,
+        5,
+        6,
+        7,
+        11,
+        114
+      ]
+    ],
+    "per_class": {
+      "Case_Based": {
+        "precision": 0.7730061349693251,
+        "recall": 0.84,
+        "f1-score": 0.805111821086262,
+        "support": 150.0
+      },
+      "Genetic_Algorithms": {
+        "precision": 0.8954248366013072,
+        "recall": 0.9133333333333333,
+        "f1-score": 0.9042904290429042,
+        "support": 150.0
+      },
+      "Neural_Networks": {
+        "precision": 0.7692307692307693,
+        "recall": 0.7333333333333333,
+        "f1-score": 0.7508532423208191,
+        "support": 150.0
+      },
+      "Probabilistic_Methods": {
+        "precision": 0.8321167883211679,
+        "recall": 0.76,
+        "f1-score": 0.794425087108014,
+        "support": 150.0
+      },
+      "Reinforcement_Learning": {
+        "precision": 0.8552631578947368,
+        "recall": 0.8666666666666667,
+        "f1-score": 0.8609271523178808,
+        "support": 150.0
+      },
+      "Rule_Learning": {
+        "precision": 0.8551724137931035,
+        "recall": 0.8266666666666667,
+        "f1-score": 0.8406779661016949,
+        "support": 150.0
+      },
+      "Theory": {
+        "precision": 0.7261146496815286,
+        "recall": 0.76,
+        "f1-score": 0.742671009771987,
+        "support": 150.0
+      },
+      "accuracy": 0.8142857142857143,
+      "macro avg": {
+        "precision": 0.8151898214988484,
+        "recall": 0.8142857142857142,
+        "f1-score": 0.8141366725356517,
+        "support": 1050.0
+      },
+      "weighted avg": {
+        "precision": 0.8151898214988483,
+        "recall": 0.8142857142857143,
+        "f1-score": 0.8141366725356517,
+        "support": 1050.0
+      }
+    },
+    "test_loss": 0.7104246020317078,
+    "best_epoch": 263,
+    "best_val_loss": 0.7329806089401245,
+    "epochs_ran": 300,
+    "training_seconds": 5.228309040998283,
+    "train_accuracy_at_best": 1.0,
+    "validation_accuracy_at_best": 0.7714285850524902,
+    "config": {
+      "hidden_dim": 32,
+      "depth": 2,
+      "dropout": 0.5,
+      "learning_rate": 0.01,
+      "weight_decay": 0.0005,
+      "max_epochs": 300,
+      "patience": 50,
+      "seed": 42,
+      "device": "cpu",
+      "threads": 4
+    },
+    "dataset": "cora",
+    "parameter_count": 46119,
+    "environment": {
+      "python": "3.13.17",
+      "torch": "2.15.0",
+      "numpy": "2.5.5",
+      "platform": "macOS-14.4-arm64-arm-64bit-Mach-O",
+      "machine": "arm64",
+      "device": "cpu"
+    }
+  },
+  "evaluation": {
+    "accuracy": 0.8142857142857143,
+    "precision_macro": 0.8151898214988484,
+    "recall_macro": 0.8142857142857142,
+    "f1_macro": 0.8141366725356517
+  }
+}

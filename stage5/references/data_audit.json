@@ -1,0 +1,425 @@
+{
+  "source_archive": "stage_5_data.zip",
+  "source_sha256": "aa65177f3b07cf8326e100323178fb4f5cca3a95505b358bfe8bfa5684bfdf0d",
+  "datasets": {
+    "cora": {
+      "node_count": 2708,
+      "feature_count": {
+        "1433": 2708
+      },
+      "classes": {
+        "Case_Based": 298,
+        "Genetic_Algorithms": 418,
+        "Neural_Networks": 818,
+        "Probabilistic_Methods": 426,
+        "Reinforcement_Learning": 217,
+        "Rule_Learning": 180,
+        "Theory": 351
+      },
+      "n_classes": 7,
+      "duplicate_node_ids": 0,
+      "feature_nonzeros": 49216,
+      "feature_zero_fraction": 0.9873173074841698,
+      "zero_feature_rows": 0,
+      "nonfinite_feature_values": 0,
+      "feature_min": 0.0,
+      "feature_max": 1.0,
+      "binary_features": true,
+      "link_rows": 5429,
+      "unique_directed_links": 5429,
+      "duplicate_directed_link_rows": 0,
+      "raw_self_loop_rows": 0,
+      "unique_undirected_nonself_edges": 5278,
+      "symmetric_adj_nnz_no_self": 10556,
+      "adj_nnz_with_one_self_each": 13264,
+      "invalid_edge_endpoints": [],
+      "isolated_nodes_excluding_self": 0,
+      "connected_components": 78,
+      "largest_component": 2485,
+      "loader_example_splits": {
+        "train": {
+          "count": 140,
+          "start": 0,
+          "stop_exclusive": 140,
+          "class_counts": {
+            "Case_Based": 14,
+            "Genetic_Algorithms": 11,
+            "Neural_Networks": 41,
+            "Probabilistic_Methods": 28,
+            "Reinforcement_Learning": 21,
+            "Rule_Learning": 8,
+            "Theory": 17
+          }
+        },
+        "validation": {
+          "count": 300,
+          "start": 1200,
+          "stop_exclusive": 1500,
+          "class_counts": {
+            "Case_Based": 37,
+            "Genetic_Algorithms": 59,
+            "Neural_Networks": 91,
+            "Probabilistic_Methods": 35,
+            "Reinforcement_Learning": 15,
+            "Rule_Learning": 21,
+            "Theory": 42
+          }
+        },
+        "test": {
+          "count": 1000,
+          "start": 200,
+          "stop_exclusive": 1200,
+          "class_counts": {
+            "Case_Based": 112,
+            "Genetic_Algorithms": 125,
+            "Neural_Networks": 323,
+            "Probabilistic_Methods": 150,
+            "Reinforcement_Learning": 95,
+            "Rule_Learning": 56,
+            "Theory": 139
+          }
+        }
+      },
+      "loader_example_split_overlap": {
+        "train-validation": 0,
+        "train-test": 0,
+        "validation-test": 0
+      },
+      "first_node_preview": {
+        "node_id": "31336",
+        "feature_count": 1433,
+        "first_nonzero_features": [
+          {
+            "column": 118,
+            "value": 1.0
+          },
+          {
+            "column": 125,
+            "value": 1.0
+          },
+          {
+            "column": 176,
+            "value": 1.0
+          },
+          {
+            "column": 252,
+            "value": 1.0
+          },
+          {
+            "column": 351,
+            "value": 1.0
+          }
+        ],
+        "label": "Neural_Networks"
+      },
+      "sha256": {
+        "node": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+        "link": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+      },
+      "undirected_nonself_edge_homophily": {
+        "same_label_edges": 4275,
+        "total_edges": 5278,
+        "fraction": 0.8099658961727927,
+        "note": "Descriptive statistic using all provided labels; never used in training or selection."
+      }
+    },
+    "citeseer": {
+      "node_count": 3312,
+      "feature_count": {
+        "3703": 3312
+      },
+      "classes": {
+        "AI": 249,
+        "Agents": 596,
+        "DB": 701,
+        "HCI": 508,
+        "IR": 668,
+        "ML": 590
+      },
+      "n_classes": 6,
+      "duplicate_node_ids": 0,
+      "feature_nonzeros": 105165,
+      "feature_zero_fraction": 0.9914251370803931,
+      "zero_feature_rows": 0,
+      "nonfinite_feature_values": 0,
+      "feature_min": 0.0,
+      "feature_max": 1.0,
+      "binary_features": true,
+      "link_rows": 4715,
+      "unique_directed_links": 4715,
+      "duplicate_directed_link_rows": 0,
+      "raw_self_loop_rows": 124,
+      "unique_undirected_nonself_edges": 4536,
+      "symmetric_adj_nnz_no_self": 9072,
+      "adj_nnz_with_one_self_each": 12384,
+      "invalid_edge_endpoints": [],
+      "isolated_nodes_excluding_self": 48,
+      "connected_components": 438,
+      "largest_component": 2110,
+      "loader_example_splits": {
+        "train": {
+          "count": 120,
+          "start": 0,
+          "stop_exclusive": 120,
+          "class_counts": {
+            "AI": 8,
+            "Agents": 43,
+            "DB": 16,
+            "HCI": 4,
+            "IR": 35,
+            "ML": 14
+          }
+        },
+        "validation": {
+          "count": 300,
+          "start": 1200,
+          "stop_exclusive": 1500,
+          "class_counts": {
+            "AI": 24,
+            "Agents": 14,
+            "DB": 73,
+            "HCI": 73,
+            "IR": 57,
+            "ML": 59
+          }
+        },
+        "test": {
+          "count": 1000,
+          "start": 200,
+          "stop_exclusive": 1200,
+          "class_counts": {
+            "AI": 58,
+            "Agents": 321,
+            "DB": 140,
+            "HCI": 81,
+            "IR": 274,
+            "ML": 126
+          }
+        }
+      },
+      "loader_example_split_overlap": {
+        "train-validation": 0,
+        "train-test": 0,
+        "validation-test": 0
+      },
+      "first_node_preview": {
+        "node_id": "0",
+        "feature_count": 3703,
+        "first_nonzero_features": [
+          {
+            "column": 36,
+            "value": 1.0
+          },
+          {
+            "column": 46,
+            "value": 1.0
+          },
+          {
+            "column": 65,
+            "value": 1.0
+          },
+          {
+            "column": 215,
+            "value": 1.0
+          },
+          {
+            "column": 261,
+            "value": 1.0
+          }
+        ],
+        "label": "Agents"
+      },
+      "sha256": {
+        "node": "0c5dec749ff43f317e9df992bd1a1ee2106d64251ee2337eb5f78971bf9e9898",
+        "link": "c6069e44df3fbd67ffabe4aa0af8d9e3d6c371af01c8663d9a91680a5e9119b9"
+      },
+      "undirected_nonself_edge_homophily": {
+        "same_label_edges": 3346,
+        "total_edges": 4536,
+        "fraction": 0.7376543209876543,
+        "note": "Descriptive statistic using all provided labels; never used in training or selection."
+      }
+    },
+    "pubmed": {
+      "node_count": 19717,
+      "feature_count": {
+        "500": 19717
+      },
+      "classes": {
+        "0": 4103,
+        "1": 7739,
+        "2": 7875
+      },
+      "n_classes": 3,
+      "duplicate_node_ids": 0,
+      "feature_nonzeros": 988031,
+      "feature_zero_fraction": 0.8997787695896942,
+      "zero_feature_rows": 0,
+      "nonfinite_feature_values": 0,
+      "feature_min": 0.0,
+      "feature_max": 1.2633097171783447,
+      "binary_features": false,
+      "link_rows": 44324,
+      "unique_directed_links": 44324,
+      "duplicate_directed_link_rows": 0,
+      "raw_self_loop_rows": 0,
+      "unique_undirected_nonself_edges": 44324,
+      "symmetric_adj_nnz_no_self": 88648,
+      "adj_nnz_with_one_self_each": 108365,
+      "invalid_edge_endpoints": [],
+      "isolated_nodes_excluding_self": 0,
+      "connected_components": 1,
+      "largest_component": 19717,
+      "loader_example_splits": {
+        "train": {
+          "count": 60,
+          "start": 0,
+          "stop_exclusive": 60,
+          "class_counts": {
+            "0": 20,
+            "1": 20,
+            "2": 20
+          }
+        },
+        "validation": {
+          "count": 300,
+          "start": 6000,
+          "stop_exclusive": 6300,
+          "class_counts": {
+            "0": 61,
+            "1": 115,
+            "2": 124
+          }
+        },
+        "test": {
+          "count": 1000,
+          "start": 6300,
+          "stop_exclusive": 7300,
+          "class_counts": {
+            "0": 188,
+            "1": 383,
+            "2": 429
+          }
+        }
+      },
+      "loader_example_split_overlap": {
+        "train-validation": 0,
+        "train-test": 0,
+        "validation-test": 0
+      },
+      "first_node_preview": {
+        "node_id": "0",
+        "feature_count": 500,
+        "first_nonzero_features": [
+          {
+            "column": 7,
+            "value": 0.004999371245503426
+          },
+          {
+            "column": 11,
+            "value": 0.04804915562272072
+          },
+          {
+            "column": 13,
+            "value": 0.012981634587049484
+          },
+          {
+            "column": 14,
+            "value": 0.01721222512423992
+          },
+          {
+            "column": 16,
+            "value": 0.017575690522789955
+          }
+        ],
+        "label": "1"
+      },
+      "sha256": {
+        "node": "971f5ca73b7c1b514856fc770f66d4af884edfa5ec1c157acdc1cee19ab9f8f1",
+        "link": "bc562730d6a8f0ac852a99477554874c7cb9debe5ff7045c8a88ce93cc0d447f"
+      },
+      "undirected_nonself_edge_homophily": {
+        "same_label_edges": 35565,
+        "total_edges": 44324,
+        "fraction": 0.8023869686851367,
+        "note": "Descriptive statistic using all provided labels; never used in training or selection."
+      }
+    }
+  },
+  "readme_source": "references/Dataset_ReadMe_original.pdf",
+  "split_requirements": {
+    "source": "Archive ReadMe.pdf, Training Testing Set Partition, pp.1-2",
+    "cora": {
+      "random_train_per_class": 20,
+      "train_total": 140,
+      "random_test_per_class": 150,
+      "test_total": 1050
+    },
+    "citeseer": {
+      "random_train_per_class": 20,
+      "train_total": 120,
+      "random_test_per_class": 200,
+      "test_total": 1200
+    },
+    "pubmed": {
+      "random_train_per_class": 20,
+      "train_total": 60,
+      "random_test_per_class": 200,
+      "test_total": 600
+    },
+    "validation": "Not specified. Sample disjointly from nodes remaining after required train/test allocation; document chosen policy. Cora Rule_Learning leaves only 10 nodes; Citeseer AI leaves only29."
+  },
+  "findings": [
+    {
+      "severity": "high",
+      "finding": "Loader example split ranges do not satisfy archive ReadMe assignment requirements.",
+      "remediation": "Use seeded stratified sampling with exactly20 train/class and150 Cora or200 Citeseer/Pubmed test/class; explicit disjoint validation."
+    },
+    {
+      "severity": "medium",
+      "finding": "Citeseer includes124 self-links, so existing loader adj+I doubles124 diagonal entries.",
+      "remediation": "Document whether preserve template exactly or replace diagonal with1; normalized sparse adjacency should remain symmetric."
+    },
+    {
+      "severity": "medium",
+      "finding": "Loader uses set(labels), making label integer encoding process-dependent.",
+      "remediation": "Sort unique label strings and export class names."
+    },
+    {
+      "severity": "low",
+      "finding": "Source Citeseer has3312 nodes rather than canonical3327; raw edge rows differ from simple-undirected edge count.",
+      "remediation": "Report source graph statistics with clear edge convention; do not call this canonical Planetoid benchmark split."
+    }
+  ],
+  "selected_protocol": {
+    "split_seed": 42,
+    "sampling": "Seeded random sampling separately within sorted classes; train and test allocated first, then validation from remaining nodes. All splits disjoint.",
+    "train_per_class": 20,
+    "test_per_class": {
+      "cora": 150,
+      "citeseer": 200,
+      "pubmed": 200
+    },
+    "validation_per_class": 10,
+    "totals": {
+      "cora": {
+        "train": 140,
+        "test": 1050,
+        "validation": 70
+      },
+      "citeseer": {
+        "train": 120,
+        "test": 1200,
+        "validation": 60
+      },
+      "pubmed": {
+        "train": 60,
+        "test": 600,
+        "validation": 30
+      }
+    },
+    "feature_preprocessing": "L1 row normalization by default; raw nonnegative inputs retained in source.",
+    "adjacency": "Preserve original raw links including self-loops, symmetrize, add identity, and apply symmetric degree normalization;124 Citeseer nodes have diagonal weight2 before normalization.",
+    "benchmark_note": "Assignment-specific source files and splits, not canonical Planetoid splits."
+  }
+}

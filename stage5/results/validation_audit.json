@@ -1,0 +1,403 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-26T14:17:58.262699+00:00",
+  "checks": [
+    "All6 independent split/data unit tests passed.",
+    "All3 datasets match supplied-loader symmetric normalization, including124 doubled Citeseer diagonal entries before normalization.",
+    "Required per-class train/test quotas and10 validation/class hold; no split overlaps.",
+    "All18 saved metric files agree with independent confusion-matrix arithmetic from prediction CSVs.",
+    "All18 CPU checkpoints reproduce saved predictions, embeddings, validation loss and test loss.",
+    "All18 best epochs equal the earliest minimum validation loss in saved learning histories.",
+    "All18 saved split files match the fixed split_seed42; run seeds vary initialization/dropout only."
+  ],
+  "datasets": {
+    "cora": {
+      "nodes": 2708,
+      "features": 1433,
+      "classes": [
+        "Case_Based",
+        "Genetic_Algorithms",
+        "Neural_Networks",
+        "Probabilistic_Methods",
+        "Reinforcement_Learning",
+        "Rule_Learning",
+        "Theory"
+      ],
+      "split_counts": {
+        "idx_train": 140,
+        "idx_val": 70,
+        "idx_test": 1050
+      },
+      "split_quotas_passed": true,
+      "split_overlap": 0,
+      "feature_row_l1_max_abs_error": 9.934107481068821e-09,
+      "adjacency_original_equation_max_abs_error": 2.9802322498717615e-08,
+      "preserved_existing_self_loops": 0,
+      "sha256": {
+        "node": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+        "link": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+      }
+    },
+    "citeseer": {
+      "nodes": 3312,
+      "features": 3703,
+      "classes": [
+        "AI",
+        "Agents",
+        "DB",
+        "HCI",
+        "IR",
+        "ML"
+      ],
+      "split_counts": {
+        "idx_train": 120,
+        "idx_val": 60,
+        "idx_test": 1200
+      },
+      "split_quotas_passed": true,
+      "split_overlap": 0,
+      "feature_row_l1_max_abs_error": 3.4769376128229723e-09,
+      "adjacency_original_equation_max_abs_error": 5.960464499743523e-08,
+      "preserved_existing_self_loops": 124,
+      "sha256": {
+        "node": "0c5dec749ff43f317e9df992bd1a1ee2106d64251ee2337eb5f78971bf9e9898",
+        "link": "c6069e44df3fbd67ffabe4aa0af8d9e3d6c371af01c8663d9a91680a5e9119b9"
+      }
+    },
+    "pubmed": {
+      "nodes": 19717,
+      "features": 500,
+      "classes": [
+        "0",
+        "1",
+        "2"
+      ],
+      "split_counts": {
+        "idx_train": 60,
+        "idx_val": 30,
+        "idx_test": 600
+      },
+      "split_quotas_passed": true,
+      "split_overlap": 0,
+      "feature_row_l1_max_abs_error": 4.029090189261453e-08,
+      "adjacency_original_equation_max_abs_error": 2.9802322498717615e-08,
+      "preserved_existing_self_loops": 0,
+      "sha256": {
+        "node": "971f5ca73b7c1b514856fc770f66d4af884edfa5ec1c157acdc1cee19ab9f8f1",
+        "link": "bc562730d6a8f0ac852a99477554874c7cb9debe5ff7045c8a88ce93cc0d447f"
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "cora/baseline/seed_42",
+      "status": "passed",
+      "test_nodes": 1050,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.799047619047619,
+        "precision_macro": 0.7999082637830303,
+        "recall_macro": 0.799047619047619,
+        "f1_macro": 0.7988717511515537
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "cora/baseline/seed_43",
+      "status": "passed",
+      "test_nodes": 1050,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8114285714285714,
+        "precision_macro": 0.811132363881063,
+        "recall_macro": 0.8114285714285714,
+        "f1_macro": 0.8107843358458725
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "cora/baseline/seed_44",
+      "status": "passed",
+      "test_nodes": 1050,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8095238095238095,
+        "precision_macro": 0.8107487268803306,
+        "recall_macro": 0.8095238095238095,
+        "f1_macro": 0.8089239935418329
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "cora/hidden32/seed_42",
+      "status": "passed",
+      "test_nodes": 1050,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8142857142857143,
+        "precision_macro": 0.8151898214988484,
+        "recall_macro": 0.8142857142857142,
+        "f1_macro": 0.8141366725356518
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "cora/hidden32/seed_43",
+      "status": "passed",
+      "test_nodes": 1050,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8142857142857143,
+        "precision_macro": 0.8152931656838828,
+        "recall_macro": 0.8142857142857143,
+        "f1_macro": 0.814418206694115
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "cora/hidden32/seed_44",
+      "status": "passed",
+      "test_nodes": 1050,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8114285714285714,
+        "precision_macro": 0.8111953134998054,
+        "recall_macro": 0.8114285714285715,
+        "f1_macro": 0.8106201777102899
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "citeseer/baseline/seed_42",
+      "status": "passed",
+      "test_nodes": 1200,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.6241666666666666,
+        "precision_macro": 0.6136386878617655,
+        "recall_macro": 0.6241666666666666,
+        "f1_macro": 0.6109403045395778
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "citeseer/baseline/seed_43",
+      "status": "passed",
+      "test_nodes": 1200,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.6258333333333334,
+        "precision_macro": 0.6144513117635888,
+        "recall_macro": 0.6258333333333334,
+        "f1_macro": 0.6143011852592775
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "citeseer/baseline/seed_44",
+      "status": "passed",
+      "test_nodes": 1200,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.6166666666666667,
+        "precision_macro": 0.6064946482601624,
+        "recall_macro": 0.6166666666666666,
+        "f1_macro": 0.6049247861319446
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "citeseer/hidden32/seed_42",
+      "status": "passed",
+      "test_nodes": 1200,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.635,
+        "precision_macro": 0.6219428481179293,
+        "recall_macro": 0.6349999999999999,
+        "f1_macro": 0.6215837059948532
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "citeseer/hidden32/seed_43",
+      "status": "passed",
+      "test_nodes": 1200,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.6358333333333334,
+        "precision_macro": 0.6295550447892416,
+        "recall_macro": 0.6358333333333334,
+        "f1_macro": 0.627084527498818
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "citeseer/hidden32/seed_44",
+      "status": "passed",
+      "test_nodes": 1200,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.63,
+        "precision_macro": 0.61770401769917,
+        "recall_macro": 0.63,
+        "f1_macro": 0.6170440120371983
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "pubmed/baseline/seed_42",
+      "status": "passed",
+      "test_nodes": 600,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8366666666666667,
+        "precision_macro": 0.8361844120920029,
+        "recall_macro": 0.8366666666666666,
+        "f1_macro": 0.8360746951077304
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "pubmed/baseline/seed_43",
+      "status": "passed",
+      "test_nodes": 600,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8433333333333334,
+        "precision_macro": 0.8423383401737469,
+        "recall_macro": 0.8433333333333333,
+        "f1_macro": 0.8425582901780525
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "pubmed/baseline/seed_44",
+      "status": "passed",
+      "test_nodes": 600,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.855,
+        "precision_macro": 0.8551225689641996,
+        "recall_macro": 0.855,
+        "f1_macro": 0.8539903435367728
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "pubmed/hidden32/seed_42",
+      "status": "passed",
+      "test_nodes": 600,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8433333333333334,
+        "precision_macro": 0.8429826418112204,
+        "recall_macro": 0.8433333333333333,
+        "f1_macro": 0.8424054028636451
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "pubmed/hidden32/seed_43",
+      "status": "passed",
+      "test_nodes": 600,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.845,
+        "precision_macro": 0.8442718194751987,
+        "recall_macro": 0.8450000000000001,
+        "f1_macro": 0.8442462044870345
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    },
+    {
+      "run": "pubmed/hidden32/seed_44",
+      "status": "passed",
+      "test_nodes": 600,
+      "checkpoint_prediction_mismatches": 0,
+      "metrics_recomputed_from_csv": {
+        "accuracy": 0.8366666666666667,
+        "precision_macro": 0.8357295482295483,
+        "recall_macro": 0.8366666666666666,
+        "f1_macro": 0.8353421503109395
+      },
+      "best_epoch_is_history_min_validation_loss": true,
+      "checkpoint_test_loss_abs_error": 0.0,
+      "checkpoint_validation_loss_abs_error": 0.0,
+      "embedding_max_abs_error": 0.0
+    }
+  ],
+  "discrepancies": [],
+  "unit_tests": {
+    "ran": 6,
+    "failures": 0,
+    "errors": 0,
+    "passed": true,
+    "log": "test_loader_normalizes_features_and_preserves_node_identity (test_data.GraphDataTests.test_loader_normalizes_features_and_preserves_node_identity) ... ok\ntest_loader_rejects_unknown_endpoints_and_duplicate_ids (test_data.GraphDataTests.test_loader_rejects_unknown_endpoints_and_duplicate_ids) ... ok\ntest_normalization_matches_hand_computation_with_existing_loop (test_data.GraphDataTests.test_normalization_matches_hand_computation_with_existing_loop) ... ok\ntest_assignment_quotas_disjoint_and_exhaustive_membership (test_data.SplitTests.test_assignment_quotas_disjoint_and_exhaustive_membership) ... ok\ntest_insufficient_class_population_fails (test_data.SplitTests.test_insufficient_class_population_fails) ... ok\ntest_seed_reproducibility_and_sensitivity (test_data.SplitTests.test_seed_reproducibility_and_sensitivity) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.023s\n\nOK\n"
+  },
+  "leakage_review": {
+    "training_source": "local_code/stage5/training.py",
+    "optimization": "Cross-entropy indexes only idx_train before backward.",
+    "selection": "Checkpoint and early stopping use val_loss only.",
+    "test_evaluation": "Test loss and metrics computed after best checkpoint restoration; no test fields in training history.",
+    "transductive_setting": "Full graph adjacency and unlabeled-node features participate in propagation, including test nodes, as intended for transductive GCN.",
+    "labels_for_stratification": "All provided labels are used solely to construct the assignment-required class-balanced split; validation/test labels do not enter training gradients.",
+    "architecture_comparison": "Both16- and32-hidden-unit variants are reported; review found no code path choosing architecture using test metrics."
+  },
+  "limitations": [
+    "This validates correctness of the fixed balanced split and reported runs; it does not measure uncertainty over different graph splits.",
+    "Validation uses10 labels/class (70/60/30 nodes), so checkpoint selection is based on small validation sets.",
+    "Optional MPS probe failed with native SIGABRT; no GPU training result is validated or claimed."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "recorded_at_utc": "2026-11-25T18:59:37.996469+00:00",
+  "purpose": "Optional Stage 5-6 GPU forward/backward smoke test",
+  "test": "Three-node normalized graph; GCN(2, 4, 2); cross-entropy backward",
+  "platform": "macOS-14.4-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "python_version": "3.13.17",
+  "torch_version": "2.15.0",
+  "capabilities": {
+    "mps_built": true,
+    "mps_available": true,
+    "cuda_available": false,
+    "cuda_device_count": 0
+  },
+  "requested_device": "mps",
+  "selected_device": "mps",
+  "timeout_seconds": 30.0,
+  "passed": false,
+  "elapsed_seconds": 1.338,
+  "returncode": -6,
+  "stdout": "{\"event\": \"initialized\", \"device\": \"mps\", \"backend\": \"edge\"}\n{\"event\": \"forward_complete\", \"loss\": 2.895766019821167}\n",
+  "stderr": "*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[MPSNDArray arrayViewWithShape:strides:]: unrecognized selector sent to instance 0x11e4dca70'\n*** First throw call stack:\n(\n\t0   CoreFoundation                      0x000000019d456ccc __exceptionPreprocess + 176\n\t1   libobjc.A.dylib                     0x000000019cf3e788 objc_exception_throw + 60\n\t2   CoreFoundation                      0x000000019d50902c -[NSObject(NSObject) __retain_OA] + 0\n\t3   CoreFoundation                      0x000000019d3c0cdc ___forwarding___ + 1580\n\t4   CoreFoundation                      0x000000019d3c05f0 _CF_forwarding_prep_0 + 96\n\t5   libtorch_cpu.dylib                  0x0000000155c8b6bc _ZN2at6native3mps20getStridedMPSNDArrayERKNS_10TensorBaseEP10MPSNDArray + 924\n\t6   libtorch_cpu.dylib                  0x0000000155c8c534 _ZN2at6native3mps11PlaceholderC2EP14MPSGraphTensorRKNS_6TensorEP7NSArrayIP8NSNumberEb11MPSDataTypeb + 1664\n\t7   libtorch_cpu.dylib                  0x0000000155d2c14c _ZN2at6native21structured_mm_out_mps4implERKNS_6TensorES4_S4_ + 1236\n\t8   libtorch_cpu.dylib                  0x0000000152dd1d98 _ZN2at12_GLOBAL__N_114wrapper_MPS_mmERKNS_6TensorES3_ + 96\n\t9   libtorch_cpu.dylib                  0x00000001547a4978 _ZN3c104impl28wrap_kernel_functor_unboxed_INS0_6detail24WrapFunctionIntoFunctor_INS_26CompileTimeFunctionPointerIFN2at6TensorENS_14DispatchKeySetERKS6_S9_EXadL_ZN5torch8autograd12VariableType12_G\t10  libtorch_cpu.dylib                  0x000000015228cc1c _ZN2at4_ops2mm4callERKNS_6TensorES4_ + 308\n\t11  libtorch_cpu.dylib                  0x0000000155927344 _ZN5torch8autograd9generated7details16mm_mat2_backwardERKN2at6TensorES6_N3c108ArrayRefINS7_6SymIntEEESA_NS7_6LayoutERKNS7_6ScalarE + 532\n\t12  libtorch_cpu.dylib                  0x000000015421cd60 _ZN5torch8autograd9generatedL28MmBackward0_apply_functionalEONSt3__16vectorIN2at6TensorENS2_9allocatorIS5_EEEENS2_5arrayIbLm2EEERS5_RN3c106LayoutERNS3_INSD_6SymIntENS6_ISG_EEEESJ_SC_SF_SJ_SJ_ + 2\t13  libtorch_cpu.dylib                  0x0000000154046210 _ZN5torch8autograd9generated11MmBackward05applyEONSt3__16vectorIN2at6TensorENS3_9allocatorIS6_EEEE + 204\n\t14  libtorch_cpu.dylib                  0x000000015503ee8c _ZN5torch8autograd4NodeclEONSt3__16vectorIN2at6TensorENS2_9allocatorIS5_EEEE + 100\n\t15  libtorch_cpu.dylib                  0x000000015503977c _ZN5torch8autograd6Engine17evaluate_functionERNSt3__110shared_ptrINS0_9GraphTaskEEEPNS0_4NodeERNS0_11InputBufferERKNS3_INS0_10ReadyQueueEEE + 2312\n\t16  libtorch_cpu.dylib                  0x0000000155034e38 _ZN5torch8autograd6Engine11thread_mainERKNSt3__110shared_ptrINS0_9GraphTaskEEE + 1560\n\t17  libtorch_cpu.dylib                  0x000000015503472c _ZN5torch8autograd6Engine11thread_initEiRKNSt3__110shared_ptrINS0_10ReadyQueueEEEb + 492\n\t18  libtorch_python.dylib               0x0000000108f5d19c _ZN5torch8autograd6python12PythonEngine11thread_initEiRKNSt3__110shared_ptrINS0_10ReadyQueueEEEb + 112\n\t19  libtorch_cpu.dylib                  0x0000000155042838 _ZNSt3__114__thread_proxyB9nqe210106INS_5tupleIJNS_10unique_ptrINS_15__thread_structENS_14default_deleteIS3_EEEEMN5torch8autograd6EngineEFviRKNS_10shared_ptrINS8_10ReadyQueueEEEbEPS9_aSC_bEEEEEPv\t20  libsystem_pthread.dylib             0x000000019d302f94 _pthread_start + 136\n\t21  libsystem_pthread.dylib             0x000000019d2fdd34 thread_start + 8\n)\nlibc++abi: terminating due to uncaught exception of type NSException\n",
+  "events": [
+    {
+      "event": "initialized",
+      "device": "mps",
+      "backend": "edge"
+    },
+    {
+      "event": "forward_complete",
+      "loss": 2.895766019821167
+    }
+  ],
+  "status": "native_crash",
+  "termination_signal": "SIGABRT",
+  "exception": "*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[MPSNDArray arrayViewWithShape:strides:]: unrecognized selector sent to instance 0x11e4dca70'",
+  "experiment_policy": "Use CPU for the reported experiments; no successful GPU training result is claimed."
+}
